@@ -20,11 +20,19 @@
 								<input type="hidden" name="ngp_action_tag_apikey_form_submitted" value="Y" />
 								<table class="form-table">
 									<tr>
-										<td>
+										<td valign="top">
 											<label for="ngp_action_tag_apikey">API Key</label>
 										</td>
-										<td>
+										<td valign="top">
 											<input name="ngp_action_tag_apikey" id="ngp_action_tag_apikey" type="text" value="<?php echo $ngp_action_tag_apikey; ?>" class="regular-text" />
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<label for="ngp_action_tag_endpoint">API Endpoint</label><br /><em>Use https://api1.myngp.com for testing</em>
+										</td>
+										<td valign="top">
+											<input name="ngp_action_tag_endpoint" id="ngp_action_tag_endpoint" type="text" value="<?php echo $ngp_action_tag_endpoint; ?>" class="regular-text" />
 										</td>
 									</tr>
 								</table>

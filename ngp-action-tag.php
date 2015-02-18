@@ -41,8 +41,10 @@ function ngp_action_tag_options_page() {
 		if( $hidden_field == 'Y' ) {
 			
 			$ngp_action_tag_apikey = esc_html( $_POST['ngp_action_tag_apikey'] );
+			$ngp_action_tag_endpoint = esc_html( $_POST['ngp_action_tag_endpoint'] );
 
 			$options['ngp_action_tag_apikey'] = $ngp_action_tag_apikey;
+			$options['ngp_action_tag_endpoint'] = $ngp_action_tag_endpoint;
 			$options['last_updated'] = time();
 
 			update_option( 'ngp_action_tag', $options );
@@ -56,6 +58,7 @@ function ngp_action_tag_options_page() {
 	if(!empty($options) && isset($options['ngp_action_tag_apikey']) && $options['ngp_action_tag_apikey'] != '') {
 
 		$ngp_action_tag_apikey = $options['ngp_action_tag_apikey'];
+		$ngp_action_tag_endpoint = $options['ngp_action_tag_endpoint'];
 		$username = 'apiuser';
 		$password = $ngp_action_tag_apikey;
 		
@@ -70,9 +73,7 @@ function ngp_action_tag_options_page() {
     ));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$response = json_decode(curl_exec ($ch));
-		curl_close ($ch);	
-    
-    
+		curl_close ($ch);
 	}
 
 	require( 'inc/options-page.php' );
@@ -93,13 +94,15 @@ function actiontag_call( $atts ){
   ), $atts );
   
   $is_url = filter_var($a['success'], FILTER_VALIDATE_URL);
+  $options = get_option( 'ngp_action_tag' );
+  $endpoint = $options['ngp_action_tag_endpoint'];
   
   $output  = '<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>';
-  $output .= '<div class="ngp-form" data-id="'.$a['id'].'"></div>';
+  $output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').'></div>';
   $output .= '<script type="text/javascript">var segueCallback = function() { '.($is_url ? 'window.location.href="'.$a['success'].'";' : 'alert("'.$a['success'].'");').' }; ';
   $output .= 'var nvtag_callbacks = nvtag_callbacks || {}; ';
-  $output .= 'nvtag_callbacks.segue = nvtag_callbacks.segueCallback || []; ';
-  $output .= 'nvtag_callbacks.segue.push(segueCallback);</script>';
+  $output .= 'nvtag_callbacks.preSegue = nvtag_callbacks.segueCallback || []; ';
+  $output .= 'nvtag_callbacks.preSegue.push(segueCallback);</script>';
   
   return $output;
 }
