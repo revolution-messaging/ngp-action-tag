@@ -1,10 +1,4 @@
-<?php 
-
-//print_r($options);
-
-?>
-
-<div id="npg-container" class="wrap">
+<div id="ngp-container" class="wrap">
 	
 	<div id="icon-options-general" class="icon32"></div>
 	<h2>NGP ActionTag Plugin</h2>
@@ -27,21 +21,51 @@
 								<table class="form-table">
 									<tr>
 										<td>
-											<label for="npg_action_tag_apikey">API Key</label>
+											<label for="ngp_action_tag_apikey">API Key</label>
 										</td>
 										<td>
-											<input name="npg_action_tag_apikey" id="npg_action_tag_apikey" type="text" value="<?php echo $ngp_action_tag_apikey; ?>" class="regular-text" />
+											<input name="ngp_action_tag_apikey" id="ngp_action_tag_apikey" type="text" value="<?php echo $ngp_action_tag_apikey; ?>" class="regular-text" />
 										</td>
 									</tr>
 								</table>
-								<p>
-									<input class="button-primary" type="submit" name="npg_action_tag_apikey_submit" value="Save" /> 
+								<p style="padding-left:10px;">
+									<input class="button-primary" type="submit" name="ngp_action_tag_apikey_submit" value="Save" /> 
 								</p>
 							</form>
-							<?php echo $response; ?>
+							
+						</div> <!-- .inside -->
+					</div>
+					
+					<?php if(is_object($response) && is_array($response->forms)): ?>
+					<div class="postbox">
+						
+						<h3><span>Available Forms</span></h3>
+
+						<div class="inside">
+							<table class="wp-list-table widefat fixed " cellspacing="0">
+  							<thead>
+    							<tr>
+      							<th class="manage-column column-id">ID</th>
+      							<th class="manage-column column-name">Name</th>
+                    <th class="manage-column column-status">Status</th>
+                    <th class="manage-column column-shortcode" style="width: 500px;">Shortcode Tag</th>
+    							</tr>
+  							</thead>
+  							<tbody>
+  							<?php foreach($response->forms as $form): ?>
+    							<tr>
+      							<td><?php echo $form->obfuscatedId; ?></td>
+      							<td><?php echo $form->name; ?></td>
+                    <td><?php echo $form->status; ?></td>
+                    <td>[actiontag id="<?php echo $form->obfuscatedId; ?>" success="Thank You!"]</td>
+    							</tr>
+  							<?php endforeach; ?>
+  							</tbody>
+							</table>
 						</div> <!-- .inside -->
 						
 					</div> <!-- .postbox -->
+					<?php endif; ?>
 					
 				</div> <!-- .meta-box-sortables .ui-sortable -->
 				
@@ -55,6 +79,3 @@
 	</div> <!-- #poststuff -->
 	
 </div> <!-- .wrap -->
-
-<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>
-<div class="ngp-form" data-id="-""></div>

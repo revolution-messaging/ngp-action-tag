@@ -17,16 +17,16 @@ function ngp_action_tag_menu() {
 
 	add_options_page(
 		'NGP ActionTag Plugin',
-		'NPG ActionTag',
+		'NGP ActionTag',
 		'manage_options',
-		'npg-action-tag',
-		'npg_action_tag_options_page'
+		'ngp-action-tag',
+		'ngp_action_tag_options_page'
 	);
 
 }
 add_action( 'admin_menu', 'ngp_action_tag_menu' );
 
-function npg_action_tag_options_page() {
+function ngp_action_tag_options_page() {
 
 	if( !current_user_can( 'manage_options' ) ) {
 		wp_die( 'You do not have the permissions to access this page.' );
@@ -40,9 +40,9 @@ function npg_action_tag_options_page() {
 		
 		if( $hidden_field == 'Y' ) {
 			
-			$ngp_action_tag_apikey = esc_html( $_POST['npg_action_tag_apikey'] );
+			$ngp_action_tag_apikey = esc_html( $_POST['ngp_action_tag_apikey'] );
 
-			$options['npg_action_tag_apikey'] = $ngp_action_tag_apikey;
+			$options['ngp_action_tag_apikey'] = $ngp_action_tag_apikey;
 			$options['last_updated'] = time();
 
 			update_option( 'ngp_action_tag', $options );
@@ -52,13 +52,15 @@ function npg_action_tag_options_page() {
 	}
 
 	$options = get_option( 'ngp_action_tag' );
-	if( $options != '' ) {
+	
+	if(!empty($options) && isset($options['ngp_action_tag_apikey']) && $options['ngp_action_tag_apikey'] != '') {
 
-		$ngp_action_tag_apikey = $options['npg_action_tag_apikey'];
+		$ngp_action_tag_apikey = $options['ngp_action_tag_apikey'];
 		$username = 'apiuser';
 		$password = $ngp_action_tag_apikey;
 		
-		$url = 'https://api1.myngp.com/v2/designations/3/contactDisclosureFields'; 
+		//$url = 'https://api1.myngp.com/v2/designations/3/contactDisclosureFields'; 
+		$url = 'https://api1.myngp.com/v2/Forms';
    	$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		//curl_setopt($ch, CURLOPT_POST, 1);
@@ -67,20 +69,38 @@ function npg_action_tag_options_page() {
     	'apiKey: '.$password
     ));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$response = curl_exec ($ch);
+		$response = json_decode(curl_exec ($ch));
 		curl_close ($ch);	
-	
+    
+    
 	}
 
 	require( 'inc/options-page.php' );
 
 }
 
-function npg_action_tag_styles() {
+function ngp_action_tag_styles() {
 
-	wp_enqueue_style( 'npg_action_tag_styles', plugins_url( 'ngp-action-tag/ngp-action-tag.css' ) );
+	wp_enqueue_style( 'ngp_action_tag_styles', plugins_url( 'ngp-action-tag/ngp-action-tag.css' ) );
 
 }
-add_action( 'admin_head', 'npg_action_tag_styles' );
+add_action( 'admin_head', 'ngp_action_tag_styles' );
 
-?>
+function actiontag_call( $atts ){
+	$a = shortcode_atts( array(
+    'id' => '',
+    'success' => '',
+  ), $atts );
+  
+  $is_url = filter_var($a['success'], FILTER_VALIDATE_URL);
+  
+  $output  = '<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>';
+  $output .= '<div class="ngp-form" data-id="'.$a['id'].'"></div>';
+  $output .= '<script type="text/javascript">var segueCallback = function() { '.($is_url ? 'window.location.href="'.$a['success'].'";' : 'alert("'.$a['success'].'");').' }; ';
+  $output .= 'var nvtag_callbacks = nvtag_callbacks || {}; ';
+  $output .= 'nvtag_callbacks.segue = nvtag_callbacks.segueCallback || []; ';
+  $output .= 'nvtag_callbacks.segue.push(segueCallback);</script>';
+  
+  return $output;
+}
+add_shortcode( 'actiontag', 'actiontag_call' );
