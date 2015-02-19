@@ -1,5 +1,5 @@
 === WP NGP ActionTag Plugin ===
-Contributors: rwwmatt, signalfade
+Contributors: rwwmatt, signalfade, dauzy
 Tags: NGP, NGPVAN, donations, FEC, politics, fundraising, signup, volunteer, petition
 Requires at least: 4.0.0
 Tested up to: 4.1.1
