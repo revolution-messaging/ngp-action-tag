@@ -11,4 +11,12 @@ This plugin utilizes the ActionTag javascript to embed forms, so you must also r
 
 Current version of plugin only support shortcode embedding.
 
+Show success message upon successful submission:
+
+    [actiontag id="1234327864327812" success="Thank You!"]
+
+Redirect to other page upon successful submission:
+
+    [actiontag id="1234327864327812" success="http://bettermotherfuckingwebsite.com/"]
+
 Next version will support auto-render of published forms.
