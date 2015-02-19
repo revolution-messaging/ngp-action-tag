@@ -1,7 +1,7 @@
 <?php 
 
 /*
- *	Plugin Name: NGP ActionTag Plugin
+ *	Plugin Name: WP NGP ActionTag Plugin
  *	Plugin URI: http://www.revolutionmessaging.com
  *	Description: Provide a list of available forms. 
  *	Version: 1.0 
