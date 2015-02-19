@@ -63,13 +63,13 @@ function ngp_action_tag_options_page() {
 		
 		//$url = 'https://api1.myngp.com/v2/designations/3/contactDisclosureFields'; 
 		$url = ($ngp_action_tag_endpoint != '' ? trim($ngp_action_tag_endpoint, '/') : 'https://api.myngp.com/').'/v2/Forms';
-   	$ch = curl_init();
+ 	$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		//curl_setopt($ch, CURLOPT_POST, 1);
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, "user=".$username."&password=".$password);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    	'apiKey: '.$password
-    ));
+		'apiKey: '.$password
+	));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$response = json_decode(curl_exec ($ch));
 		curl_close ($ch);
@@ -88,21 +88,21 @@ add_action( 'admin_head', 'ngp_action_tag_styles' );
 
 function actiontag_call( $atts ){
 	$a = shortcode_atts( array(
-    'id' => '',
-    'success' => '',
-  ), $atts );
-  
-  $is_url = filter_var($a['success'], FILTER_VALIDATE_URL);
-  $options = get_option( 'ngp_action_tag' );
-  $endpoint = $options['ngp_action_tag_endpoint'];
-  
-  $output  = '<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>';
-  $output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').'></div>';
-  $output .= '<script type="text/javascript">var segueCallback = function() { '.($is_url ? 'window.location.href="'.$a['success'].'";' : 'alert("'.$a['success'].'");').' }; ';
-  $output .= 'var nvtag_callbacks = nvtag_callbacks || {}; ';
-  $output .= 'nvtag_callbacks.preSegue = nvtag_callbacks.segueCallback || []; ';
-  $output .= 'nvtag_callbacks.preSegue.push(segueCallback);</script>';
-  
-  return $output;
+	'id' => '',
+	'success' => '',
+), $atts );
+
+$is_url = filter_var($a['success'], FILTER_VALIDATE_URL);
+$options = get_option( 'ngp_action_tag' );
+$endpoint = $options['ngp_action_tag_endpoint'];
+
+$output= '<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>';
+$output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').'></div>';
+$output .= '<script type="text/javascript">var segueCallback = function() { '.($is_url ? 'window.location.href="'.$a['success'].'";' : 'alert("'.$a['success'].'");').' }; ';
+$output .= 'var nvtag_callbacks = nvtag_callbacks || {}; ';
+$output .= 'nvtag_callbacks.preSegue = nvtag_callbacks.segueCallback || []; ';
+$output .= 'nvtag_callbacks.preSegue.push(segueCallback);</script>';
+
+return $output;
 }
 add_shortcode( 'actiontag', 'actiontag_call' );

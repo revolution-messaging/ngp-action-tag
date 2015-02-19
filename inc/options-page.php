@@ -51,24 +51,24 @@
 
 						<div class="inside">
 							<table class="wp-list-table widefat fixed " cellspacing="0">
-  							<thead>
-    							<tr>
-      							<th class="manage-column column-id">ID</th>
-      							<th class="manage-column column-name">Name</th>
-                    <th class="manage-column column-status">Status</th>
-                    <th class="manage-column column-shortcode" style="width: 500px;">Shortcode Tag</th>
-    							</tr>
-  							</thead>
-  							<tbody>
-  							<?php foreach($response->forms as $form): ?>
-    							<tr>
-      							<td><?php echo $form->obfuscatedId; ?></td>
-      							<td><?php echo $form->name; ?></td>
-                    <td><?php echo $form->status; ?></td>
-                    <td>[actiontag id="<?php echo $form->obfuscatedId; ?>" success="Thank You!"]</td>
-    							</tr>
-  							<?php endforeach; ?>
-  							</tbody>
+							<thead>
+								<tr>
+								<th class="manage-column column-id">ID</th>
+								<th class="manage-column column-name">Name</th>
+					<th class="manage-column column-status">Status</th>
+					<th class="manage-column column-shortcode" style="width: 500px;">Shortcode Tag</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php foreach($response->forms as $form): ?>
+								<tr>
+								<td><?php echo $form->obfuscatedId; ?></td>
+								<td><?php echo $form->name; ?></td>
+					<td><?php echo $form->status; ?></td>
+					<td>[actiontag id="<?php echo $form->obfuscatedId; ?>" success="Thank You!"]</td>
+								</tr>
+							<?php endforeach; ?>
+							</tbody>
 							</table>
 						</div> <!-- .inside -->
 						
