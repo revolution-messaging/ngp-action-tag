@@ -63,7 +63,7 @@ function ngp_action_tag_options_page() {
 		$password = $ngp_action_tag_apikey;
 		
 		//$url = 'https://api1.myngp.com/v2/designations/3/contactDisclosureFields'; 
-		$url = 'https://api1.myngp.com/v2/Forms';
+		$url = ($ngp_action_tag_endpoint != '' ? trim($ngp_action_tag_endpoint, '/') : 'https://api.myngp.com/').'/v2/Forms';
    	$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		//curl_setopt($ch, CURLOPT_POST, 1);
