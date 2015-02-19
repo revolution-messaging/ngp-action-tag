@@ -35,6 +35,38 @@
 											<input name="ngp_action_tag_endpoint" id="ngp_action_tag_endpoint" type="text" value="<?php echo $ngp_action_tag_endpoint; ?>" class="regular-text" />
 										</td>
 									</tr>
+									<tr>
+										<td valign="top">
+											<label for="ngp_action_tag_signup_form_url">Signup Form Url</label>
+										</td>
+										<td valign="top">
+											<input name="ngp_action_tag_signup_form_url" id="ngp_action_tag_signup_form_url" type="text" value="" class="regular-text" />
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<label for="ngp_action_tag_contribution_form_url">Contribution Form Url</label>
+										</td>
+										<td valign="top">
+											<input name="ngp_action_tag_contribution_form_url" id="ngp_action_tag_contribution_form_url" type="text" value="" class="regular-text" />
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<label for="ngp_action_tag_petition_form_url">Petition Form Url</label>
+										</td>
+										<td valign="top">
+											<input name="ngp_action_tag_petition_form_url" id="ngp_action_tag_petition_form_url" type="text" value="" class="regular-text" />
+										</td>
+									</tr>
+									<tr>
+										<td valign="top">
+											<label for="ngp_action_tag_volunteer_form_url">Volunteer Form Url</label>
+										</td>
+										<td valign="top">
+											<input name="ngp_action_tag_volunteer_form_url" id="ngp_action_tag_volunteer_form_url" type="text" value="" class="regular-text" />
+										</td>
+									</tr>
 								</table>
 								<p style="padding-left:10px;">
 									<input class="button-primary" type="submit" name="ngp_action_tag_apikey_submit" value="Save" /> 
