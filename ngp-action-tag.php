@@ -1,5 +1,4 @@
 <?php 
-
 /*
  *	Plugin Name: WP NGP ActionTag Plugin
  *	Plugin URI: http://www.revolutionmessaging.com
@@ -10,7 +9,7 @@
  *	License: GPL2
  *
 */
-
+// Copyright (C) 2015 Revolution Messaging, LLC
 $options = array();
 
 function ngp_action_tag_menu() {
