@@ -1,5 +1,5 @@
 === WP NGP ActionTag Plugin ===
-Contributors: signalfade
+Contributors: rwwmatt, signalfade
 Tags: NGP, NGPVAN, donations, FEC, politics, fundraising, signup, volunteer, petition
 Requires at least: 4.0.0
 Tested up to: 4.1.1
@@ -28,7 +28,7 @@ Show success message upon successful submission:
 
 Redirect to other page upon successful submission:
 
-`[actiontag id="1234327864327812" success="http://bettermotherfuckingwebsite.com/"]`
+`[actiontag id="1234327864327812" success="http://somedomain.com/a-page/a-sub-page"]`
 
 We will support auto-render of published forms in a later version.
 
