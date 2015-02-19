@@ -1,9 +1,9 @@
 === WP NGP ActionTag Plugin ===
-Contributors: signalfade
+Contributors: signalfade, rwwmatt, dauzy
 Tags: NGP, NGPVAN, donations, FEC, politics, fundraising, signup, volunteer, petition
 Requires at least: 4.0.0
 Tested up to: 4.1.1
-Stable tag: 1.0
+Stable tag: 2.0
 
 *Please note*: This plugin is not produced or supported by NGPVAN.
 
@@ -40,6 +40,10 @@ Go to `Settings -> NGP ActionTag` and fill out the "API Key" and "API Endpoint" 
 
 
 == Changelog ==
+
+= 2.0 =
+* Supporting for more options on shortcode.
+* Support for auto-render of published forms.
 
 = 1.0 =
 * First version. Shortcodes with success configuration.
