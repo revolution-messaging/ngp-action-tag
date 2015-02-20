@@ -3,7 +3,7 @@
  *	Plugin Name: WP NGP ActionTag Plugin
  *	Plugin URI: http://www.revolutionmessaging.com
  *	Description: Provide a list of available forms. 
- *	Version: 1.0 
+ *	Version: 2.0 
  *	Author: Revolution Messaging
  *	Author URI: http://www.revolutionmessaging.com
  *	License: GPL2
@@ -11,103 +11,93 @@
 */
 // Copyright (C) 2015 Revolution Messaging, LLC
 
-const NGP_API_ENDPOINT = 'https://api.myngp.com/';
-$options = array();
-
-function ngp_action_tag_menu() {
-
-	add_options_page(
-		'NGP ActionTag Plugin',
-		'NGP ActionTag',
-		'manage_options',
-		'ngp-action-tag',
-		'ngp_action_tag_options_page'
-	);
-
-}
-add_action( 'admin_menu', 'ngp_action_tag_menu' );
-
-function ngp_action_tag_options_page() {
-
-	if( !current_user_can( 'manage_options' ) ) {
-		wp_die( 'You do not have the permissions to access this page.' );
-	}
-
-	global $options;
-
-	if( isset( $_POST['ngp_action_tag_apikey_form_submitted'] ) ) {
-	
-		$hidden_field = esc_html( $_POST['ngp_action_tag_apikey_form_submitted'] );
-		
-		if( $hidden_field == 'Y' ) {
-			
-			$ngp_action_tag_apikey = esc_html( $_POST['ngp_action_tag_apikey'] );
-			$ngp_action_tag_endpoint = esc_html( $_POST['ngp_action_tag_endpoint'] );
-
-			$options['ngp_action_tag_apikey'] = $ngp_action_tag_apikey;
-			$options['ngp_action_tag_endpoint'] = $ngp_action_tag_endpoint;
-			$options['last_updated'] = time();
-
-			update_option( 'ngp_action_tag', $options );
-
-		}
-
-	}
-
-	$options = get_option( 'ngp_action_tag' );
-	
-	if(!empty($options) && isset($options['ngp_action_tag_apikey']) && $options['ngp_action_tag_apikey'] != '') {
-
-		$ngp_action_tag_apikey = $options['ngp_action_tag_apikey'];
-		$ngp_action_tag_endpoint = ($options['ngp_action_tag_endpoint'] == '' ? NGP_API_ENDPOINT : $options['ngp_action_tag_endpoint']);
-		$username = 'apiuser';
-		$password = $ngp_action_tag_apikey;
-		
-		//$url = 'https://api1.myngp.com/v2/designations/3/contactDisclosureFields'; 
-		$url = ($ngp_action_tag_endpoint != '' ? trim($ngp_action_tag_endpoint, '/') : NGP_API_ENDPOINT).'/v2/Forms';
-   	$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		//curl_setopt($ch, CURLOPT_POST, 1);
-		//curl_setopt($ch, CURLOPT_POSTFIELDS, "user=".$username."&password=".$password);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    	'apiKey: '.$password
-    ));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$response = json_decode(curl_exec ($ch));
-		curl_close ($ch);
-	}
+class NGPActionTag {
   
-	require( 'inc/options-page.php' );
-
+  const NGP_API_ENDPOINT = 'https://api.myngp.com/';
+  
+  protected $loader;
+  protected $plugin_slug;
+  protected $version;
+  
+  public function __construct() {
+    
+    $this->plugin_slug = 'ngp-action-tag';
+    $this->version = '2.0.0'; 
+    
+    $this->load_dependencies();
+    
+    if(is_admin()) {
+      
+      $this->define_admin_hooks();
+    } else {
+      
+      $this->define_site_hooks();
+    }
+  }
+  
+  private function load_dependencies() {
+    
+    require_once plugin_dir_path(dirname(__FILE__)).$this->plugin_slug.'/includes/class-ngp-action-tag-loader.php';
+    require_once plugin_dir_path(dirname(__FILE__)).$this->plugin_slug.'/includes/class-ngp-action-tag-api.php';
+    
+    if(is_admin()) {
+      
+      require_once plugin_dir_path(dirname(__FILE__)).$this->plugin_slug.'/admin/class-ngp-action-tag-admin.php';
+    } else {
+      
+      require_once plugin_dir_path(dirname(__FILE__)).$this->plugin_slug.'/site/class-ngp-action-tag-site.php';
+    }
+    
+    $this->loader = new NGPActionTag_Loader();
+  }
+  
+  private function define_admin_hooks() {
+    
+    $admin = new NGPActionTag_Admin($this->get_version());
+    
+    $this->loader->add_action('admin_menu', $admin, 'create_admin_menus');
+    $this->loader->add_action('admin_init', $admin, 'register_settings');
+  }
+  
+  public function define_site_hooks() {
+    
+    $site = new NGPActionTag_Site($this->get_version());
+    
+    //$this->loader->add_action('init', $site, 'init');
+    $this->loader->add_filter('query_vars', $site, 'register_query_vars');
+    $this->loader->add_action('parse_request', $site, 'parse_request');
+    
+    add_shortcode('actiontag', array(&$site, 'create_shortcode'));
+  }
+  
+  public function run() {
+    
+    $this->loader->run();
+  }
+  
+  public function get_version() {
+    
+    return $this->version; 
+  }
 }
 
-function ngp_action_tag_styles() {
+if(!defined('WPINC')) {
+  
+  die;
+}
+
+function run_ngp_action_tag() {
+  
+  $ngp_action_tag = new NGPActionTag();
+  $ngp_action_tag->run();
+}
+
+run_ngp_action_tag();
+
+
+/*function ngp_action_tag_styles() {
 
 	wp_enqueue_style( 'ngp_action_tag_styles', plugins_url( 'ngp-action-tag/ngp-action-tag.css' ) );
 
 }
-add_action( 'admin_head', 'ngp_action_tag_styles' );
-
-function actiontag_call( $atts ){
-	$a = shortcode_atts( array(
-    'id' => '',
-    'success' => '',
-    'template' => '',
-    'labels' => '',
-    'databag' => '',
-  ), $atts );
-  
-  $is_url = filter_var($a['success'], FILTER_VALIDATE_URL);
-  $options = get_option( 'ngp_action_tag' );
-  $endpoint = $options['ngp_action_tag_endpoint'];
-  
-  $output  = '<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>';
-  $output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').' data-template="'.$a['template'].'" data-labels="'.$a['labels'].'" data-databag="'.$a['databag'].'"></div>';
-  $output .= '<script type="text/javascript">var segueCallback = function() { '.($is_url ? 'window.location.href="'.$a['success'].'";' : 'alert("'.$a['success'].'");').' }; ';
-  $output .= 'var nvtag_callbacks = nvtag_callbacks || {}; ';
-  $output .= 'nvtag_callbacks.preSegue = nvtag_callbacks.segueCallback || []; ';
-  $output .= 'nvtag_callbacks.preSegue.push(segueCallback);</script>';
-  
-  return $output;
-}
-add_shortcode( 'actiontag', 'actiontag_call' );
+add_action( 'admin_head', 'ngp_action_tag_styles' );*/
