@@ -10,6 +10,8 @@
  *
 */
 // Copyright (C) 2015 Revolution Messaging, LLC
+
+const NGP_API_ENDPOINT = 'https://api.myngp.com/';
 $options = array();
 
 function ngp_action_tag_menu() {
@@ -57,12 +59,12 @@ function ngp_action_tag_options_page() {
 	if(!empty($options) && isset($options['ngp_action_tag_apikey']) && $options['ngp_action_tag_apikey'] != '') {
 
 		$ngp_action_tag_apikey = $options['ngp_action_tag_apikey'];
-		$ngp_action_tag_endpoint = $options['ngp_action_tag_endpoint'];
+		$ngp_action_tag_endpoint = ($options['ngp_action_tag_endpoint'] == '' ? NGP_API_ENDPOINT : $options['ngp_action_tag_endpoint']);
 		$username = 'apiuser';
 		$password = $ngp_action_tag_apikey;
 		
 		//$url = 'https://api1.myngp.com/v2/designations/3/contactDisclosureFields'; 
-		$url = ($ngp_action_tag_endpoint != '' ? trim($ngp_action_tag_endpoint, '/') : 'https://api.myngp.com/').'/v2/Forms';
+		$url = ($ngp_action_tag_endpoint != '' ? trim($ngp_action_tag_endpoint, '/') : NGP_API_ENDPOINT).'/v2/Forms';
    	$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		//curl_setopt($ch, CURLOPT_POST, 1);
@@ -74,7 +76,7 @@ function ngp_action_tag_options_page() {
 		$response = json_decode(curl_exec ($ch));
 		curl_close ($ch);
 	}
-
+  
 	require( 'inc/options-page.php' );
 
 }
@@ -90,6 +92,9 @@ function actiontag_call( $atts ){
 	$a = shortcode_atts( array(
     'id' => '',
     'success' => '',
+    'template' => '',
+    'labels' => '',
+    'databag' => '',
   ), $atts );
   
   $is_url = filter_var($a['success'], FILTER_VALIDATE_URL);
@@ -97,7 +102,7 @@ function actiontag_call( $atts ){
   $endpoint = $options['ngp_action_tag_endpoint'];
   
   $output  = '<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>';
-  $output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').'></div>';
+  $output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').' data-template="'.$a['template'].'" data-labels="'.$a['labels'].'" data-databag="'.$a['databag'].'"></div>';
   $output .= '<script type="text/javascript">var segueCallback = function() { '.($is_url ? 'window.location.href="'.$a['success'].'";' : 'alert("'.$a['success'].'");').' }; ';
   $output .= 'var nvtag_callbacks = nvtag_callbacks || {}; ';
   $output .= 'nvtag_callbacks.preSegue = nvtag_callbacks.segueCallback || []; ';
