@@ -42,12 +42,14 @@ class NGPActionTag_Site {
     
     if($this->setup_complete)
       return;
-      
-    $template_file = locate_template($this->page_type.'-form.php');
     
-    if(!empty($located)) {
+    $form = $this->api->load_form_by_name_or_id($this->page_name, $this->page_type);
+    $template_file = locate_template($this->page_type.'-form.php');
+    $endpoint = get_option('ngp_action_tag_endpoint');
+    
+    if(!empty($template_file)) {
       
-      include $this->page_type.'-form.php';
+      include $template_file;
     } else {
       
       include 'templates/'.$this->page_type.'-form.php';
@@ -57,6 +59,7 @@ class NGPActionTag_Site {
   }
   
   public function create_shortcode($attributes) {
+	
     $a = shortcode_atts(array(
       'id' => '',
       'success' => '',

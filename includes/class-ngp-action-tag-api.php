@@ -2,6 +2,11 @@
   
 class NGPActionTag_API {
 
+  const SIGNUP_FORM = 'signup';
+  const CONTRIBUTION_FORM = 'contribution';
+  const VOLUNTEER_FORM = 'volunteer';
+  const PETITION_FORM = 'petition';
+
   protected $api_base = null;
   protected $api_key = null;
 
@@ -23,6 +28,7 @@ class NGPActionTag_API {
       
       foreach($result->forms as $form) {
         
+        // Make sure to only send back forms with the published status.
         if($form->status == 'Published') {
         
           $forms[] = $form;    
@@ -33,23 +39,57 @@ class NGPActionTag_API {
     return $forms;
   }
   
-  public function load_form_by_id($id) {
+  public function load_form_by_name_or_id($id, $type = '') {
     
-    $forms = array();
-    $result = $this->do_request('/v2/Forms/'.$id);
-    print_r($result); exit;
-    if(is_object($result) && is_array($result->forms)) {
-      
-      foreach($result->forms as $form) {
+    $id_match = null;
+    $name_match = null;
+    $forms = $this->load_forms();
+    $selected_form = null;
+    
+    foreach($forms as $key => $form) {
         
-        if($form->status == 'Published') {
+      if($form->name == $id) {
         
-          $forms[] = $form;    
+        if($type == self::SIGNUP_FORM && $form->type == 'SignupForm') {
+          
+          $name_match[] = $forms[$key];
+        } elseif($type == self::CONTRIBUTION_FORM && $form->type == 'ContributionForm') {
+          
+          $name_match[] = $forms[$key];
+        } elseif($type == self::VOLUNTEER_FORM && $form->type == 'VolunteerForm') {
+          
+          $name_match[] = $forms[$key];
+        } elseif($type == self::PETITION_FORM && $form->type == 'PetitionForm') {
+          
+          $name_match[] = $forms[$key];
+        }
+      } elseif($form->obfuscatedId == $id) {
+        
+        if($type == self::SIGNUP_FORM && $form->type == 'SignupForm') {
+          
+          $id_match[] = $forms[$key];
+        } elseif($type == self::CONTRIBUTION_FORM && $form->type == 'ContributionForm') {
+          
+          $id_match[] = $forms[$key];
+        } elseif($type == self::VOLUNTEER_FORM && $form->type == 'VolunteerForm') {
+          
+          $id_match[] = $forms[$key];
+        } elseif($type == self::PETITION_FORM && $form->type == 'PetitionForm') {
+          
+          $id_match[] = $forms[$key];
         }
       }
     }
     
-    return $forms;
+    if(!empty($name_match)) {
+      
+      $selected_form = $name_match[count($name_match) - 1];
+    } elseif(!empty($id_match)) {
+      
+      $selected_form = $id_match[count($id_match) - 1]; 
+    }
+    
+    return $selected_form;
   }
   
   private function do_request($request) {

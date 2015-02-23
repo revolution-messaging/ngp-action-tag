@@ -26,6 +26,7 @@
 										<td>
 											<input name="ngp_action_tag_apikey" id="ngp_action_tag_apikey" type="text" value="<?php echo get_option('ngp_action_tag_apikey'); ?>" class="regular-text" />
 										</td>
+										<td>&nbsp;</td>
 									</tr>
 									<tr>
 										<td>
@@ -34,6 +35,7 @@
 										<td>
 											<input name="ngp_action_tag_endpoint" id="ngp_action_tag_endpoint" type="text" value="<?php echo get_option('ngp_action_tag_endpoint'); ?>" class="regular-text" />
 										</td>
+										<td>&nbsp;</td>
 									</tr>
 									<tr>
 										<td>
@@ -42,6 +44,9 @@
 										<td>
   										/ <input name="ngp_action_tag_signup_form_url_slug" id="ngp_action_tag_signup_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_signup_form_url_slug');" /> / 
 											<input name="ngp_action_tag_signup_form_url" id="ngp_action_tag_signup_form_url" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_signup_form_url');" />
+										</td>
+										<td>
+  										<a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_signup_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_signup_form_url').value, '_blank');" target="_blank">View Page</a>
 										</td>
 									</tr>
 									<tr>
@@ -52,6 +57,9 @@
   										/ <input name="ngp_action_tag_contribution_form_url_slug" id="ngp_action_tag_contribution_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_contribution_form_url_slug');" /> / 
 											<input name="ngp_action_tag_contribution_form_url" id="ngp_action_tag_contribution_form_url" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_contribution_form_url');" />
 										</td>
+										<td>
+  										<a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_contribution_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_contribution_form_url').value, '_blank');" target="_blank">View Page</a>
+										</td>
 									</tr>
 									<tr>
 										<td>
@@ -61,6 +69,9 @@
   										/ <input name="ngp_action_tag_petition_form_url_slug" id="ngp_action_tag_petition_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_petition_form_url_slug');" /> / 
 											<input name="ngp_action_tag_petition_form_url" id="ngp_action_tag_petition_form_url" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_petition_form_url');" />
 										</td>
+										<td>
+  										<a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_petition_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_petition_form_url').value, '_blank');" target="_blank">View Page</a>
+										</td>
 									</tr>
 									<tr>
 										<td>
@@ -69,6 +80,9 @@
 										<td>
   										/ <input name="ngp_action_tag_volunteer_form_url_slug" id="ngp_action_tag_volunteer_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_volunteer_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_volunteer_form_url_slug');" /> / 
 											<input name="ngp_action_tag_volunteer_form_url" id="ngp_action_tag_volunteer_form_url" type="text" value="<?php echo get_option('ngp_action_tag_volunteer_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_volunteer_form_url');" />
+										</td>
+										<td>
+  										<a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_volunteer_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_volunteer_form_url').value, '_blank');" target="_blank">View Page</a>
 										</td>
 									</tr>
 								</table>
@@ -91,7 +105,7 @@
     							<tr>
       							<th class="manage-column column-id">ID</th>
       							<th class="manage-column column-name">Name</th>
-                    <th class="manage-column column-status">Status</th>
+                    <th class="manage-column column-status">Type</th>
                     <th class="manage-column column-shortcode" style="width: 500px;">Shortcode Tag</th>
     							</tr>
   							</thead>
@@ -100,7 +114,7 @@
     							<tr>
       							<td><?php echo $form->obfuscatedId; ?></td>
       							<td><?php echo $form->name; ?></td>
-                    <td><?php echo $form->status; ?></td>
+                    <td><?php echo $form->type; ?></td>
                     <td>[actiontag id="<?php echo $form->obfuscatedId; ?>" success="Thank You!"]</td>
     							</tr>
   							<?php endforeach; ?>
