@@ -49,6 +49,10 @@ class NGPActionTag_Site {
     
     if(!empty($template_file)) {
       
+      $action = get_option('ngp_action_tag_'.$this->page_type.'_form_action');
+      $redirect = get_option('ngp_action_tag_'.$this->page_type.'_form_redirect');
+      $message = get_option('ngp_action_tag_'.$this->page_type.'_form_message');
+      
       include $template_file;
     } else {
       

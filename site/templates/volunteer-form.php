@@ -18,6 +18,12 @@ get_header(); ?>
 	  
   	<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>
     <div class="ngp-form" data-id="<?php echo $form->obfuscatedId; ?>" <?php echo ($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : ''); ?>></div>
+    <script type="text/javascript">
+      var segueCallback = function() { <?php if($action == 'redirect'): ?>window.location.href='<?php echo $redirect; ?>';<?php elseif($message != ''): ?>alert('<?php echo $message; ?>');<?php endif; ?>};
+      var nvtag_callbacks = nvtag_callbacks || {};
+      nvtag_callbacks.preSegue = nvtag_callbacks.segueCallback || []; 
+      nvtag_callbacks.preSegue.push(segueCallback);
+    </script>
     
   <?php endif; ?>
 

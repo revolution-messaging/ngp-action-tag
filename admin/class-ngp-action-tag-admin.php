@@ -31,6 +31,19 @@ class NGPActionTag_Admin {
     register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_contribution_form_url');
     register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_petition_form_url');
     register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_volunteer_form_url');
+    
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_signup_form_action');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_contribution_form_action');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_petition_form_action');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_volunteer_form_action');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_signup_form_message');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_contribution_form_message');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_petition_form_message');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_volunteer_form_message');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_signup_form_redirect');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_contribution_form_redirect');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_petition_form_redirect');
+    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_volunteer_form_redirect');
   }
   
   public function settings() {
