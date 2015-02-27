@@ -43,7 +43,7 @@
 									<tr>
 										<td><label for="ngp_action_tag_signup_form_action_message">Signup Form Action</label></td>
 										<td>
-  										<input name="ngp_action_tag_signup_form_action" id="ngp_action_tag_signup_form_action_message" type="radio" value="message" />
+  										<input name="ngp_action_tag_signup_form_action" id="ngp_action_tag_signup_form_action_message" type="radio" value="message" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
   										&nbsp;&nbsp;<input name="ngp_action_tag_signup_form_message" id="ngp_action_tag_signup_form_message" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_message'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
@@ -51,7 +51,7 @@
 									<tr>
 										<td></td>
 										<td>
-  										<input name="ngp_action_tag_signup_form_action" id="ngp_action_tag_signup_form_action_redirect" type="radio" value="redirect" />
+  										<input name="ngp_action_tag_signup_form_action" id="ngp_action_tag_signup_form_action_redirect" type="radio" value="redirect" <?php if(get_option('ngp_action_tag_signup_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />
   										&nbsp;&nbsp;<input name="ngp_action_tag_signup_form_redirect" id="ngp_action_tag_signup_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_redirect'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
@@ -70,7 +70,7 @@
 									<tr>
 										<td><label for="ngp_action_tag_contribution_form_url">Contribution Form Action</label></td>
 										<td>
-  										<input name="ngp_action_tag_contribution_form_action" id="ngp_action_tag_contribution_form_action" type="radio" value="message" />
+  										<input name="ngp_action_tag_contribution_form_action" id="ngp_action_tag_contribution_form_action" type="radio" value="message" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
   										&nbsp;&nbsp;<input name="ngp_action_tag_contribution_form_message" id="ngp_action_tag_contribution_form_message" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_message'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
@@ -78,7 +78,7 @@
 									<tr>
 										<td></td>
 										<td>
-  										<input name="ngp_action_tag_contribution_form_action" id="ngp_action_tag_contribution_form_action" type="radio" value="redirect" />
+  										<input name="ngp_action_tag_contribution_form_action" id="ngp_action_tag_contribution_form_action" type="radio" value="redirect" <?php if(get_option('ngp_action_tag_signup_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />
   										&nbsp;&nbsp;<input name="ngp_action_tag_contribution_form_redirect" id="ngp_action_tag_contribution_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_redirect'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
@@ -97,7 +97,7 @@
 									<tr>
 										<td><label for="ngp_action_tag_petition_form_url">Petition Form Action</label></td>
 										<td>
-  										<input name="ngp_action_tag_petition_form_action" id="ngp_action_tag_petition_form_action" type="radio" value="message" />
+  										<input name="ngp_action_tag_petition_form_action" id="ngp_action_tag_petition_form_action" type="radio" value="message" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
   										&nbsp;&nbsp;<input name="ngp_action_tag_petition_form_message" id="ngp_action_tag_petition_form_message" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_message'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
@@ -105,7 +105,7 @@
 									<tr>
 										<td></td>
 										<td>
-  										<input name="ngp_action_tag_petition_form_action" id="ngp_action_tag_petition_form_action" type="radio" value="redirect" />
+  										<input name="ngp_action_tag_petition_form_action" id="ngp_action_tag_petition_form_action" type="radio" value="redirect" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
   										&nbsp;&nbsp;<input name="ngp_action_tag_petition_form_redirect" id="ngp_action_tag_petition_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_redirect'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
