@@ -1,198 +1,136 @@
 <div id="ngp-container" class="wrap">
-	
 	<div id="icon-options-general" class="icon32"></div>
-	<h2>NGP ActionTag Plugin</h2>
+	<h2>NGP ActionTag Plugin - Form Settings</h2>
 	<div id="poststuff">
-	
 		<div id="post-body" class="metabox-holder columns-2">
-		
-			<!-- main content -->
 			<div id="post-body-content">
-				
 				<div class="meta-box-sortables ui-sortable">
-					
 					<div class="postbox">
-					
-						<h3><span>Please enter your API key.</span></h3>
-
-						<div class="inside">
-							<form name="ngp_action_tag_apikey_form" method="post" action="options.php">
-  							<?php @settings_fields('ngp-action-tag-settings-group'); ?>
-								<table class="form-table">
-									<tr>
-										<td style="width: 260px;"><label for="ngp_action_tag_apikey">API Key</label></td>
-										<td style="width: 500px;"><input name="ngp_action_tag_apikey" id="ngp_action_tag_apikey" type="text" value="<?php echo get_option('ngp_action_tag_apikey'); ?>" class="regular-text" /></td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_endpoint">API Endpoint</label><br /><em class="ngp-info">Use https://api1.myngp.com for testing</em></td>
-										<td><input name="ngp_action_tag_endpoint" id="ngp_action_tag_endpoint" type="text" value="<?php echo get_option('ngp_action_tag_endpoint'); ?>" class="regular-text" /></td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-  									<td colspan="3">&nbsp;</td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_signup_form_url">Signup Form Url</label></td>
-										<td>
-  										/ <input name="ngp_action_tag_signup_form_url_slug" id="ngp_action_tag_signup_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_signup_form_url_slug');" /> / 
-											<input name="ngp_action_tag_signup_form_url" id="ngp_action_tag_signup_form_url" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_signup_form_url');" />
-										</td>
-										<td><a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_signup_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_signup_form_url').value, '_blank');" target="_blank">View Page</a></td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_signup_form_action_message">Signup Form Action</label></td>
-										<td>
-  										<input name="ngp_action_tag_signup_form_action" id="ngp_action_tag_signup_form_action_message" type="radio" value="message" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_signup_form_message" id="ngp_action_tag_signup_form_message" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_message'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td>
-  										<input name="ngp_action_tag_signup_form_action" id="ngp_action_tag_signup_form_action_redirect" type="radio" value="redirect" <?php if(get_option('ngp_action_tag_signup_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_signup_form_redirect" id="ngp_action_tag_signup_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_signup_form_redirect'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-  									<td colspan="3">&nbsp;</td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_contribution_form_url">Contribution Form Url</label></td>
-										<td>
-  										/ <input name="ngp_action_tag_contribution_form_url_slug" id="ngp_action_tag_contribution_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_contribution_form_url_slug');" /> / 
-											<input name="ngp_action_tag_contribution_form_url" id="ngp_action_tag_contribution_form_url" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_contribution_form_url');" />
-										</td>
-										<td><a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_contribution_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_contribution_form_url').value, '_blank');" target="_blank">View Page</a></td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_contribution_form_url">Contribution Form Action</label></td>
-										<td>
-  										<input name="ngp_action_tag_contribution_form_action" id="ngp_action_tag_contribution_form_action" type="radio" value="message" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_contribution_form_message" id="ngp_action_tag_contribution_form_message" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_message'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td>
-  										<input name="ngp_action_tag_contribution_form_action" id="ngp_action_tag_contribution_form_action" type="radio" value="redirect" <?php if(get_option('ngp_action_tag_signup_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_contribution_form_redirect" id="ngp_action_tag_contribution_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_contribution_form_redirect'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-  									<td colspan="3">&nbsp;</td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_petition_form_url">Petition Form Url</label></td>
-										<td>
-  										/ <input name="ngp_action_tag_petition_form_url_slug" id="ngp_action_tag_petition_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_petition_form_url_slug');" /> / 
-											<input name="ngp_action_tag_petition_form_url" id="ngp_action_tag_petition_form_url" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_petition_form_url');" />
-										</td>
-										<td><a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_petition_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_petition_form_url').value, '_blank');" target="_blank">View Page</a></td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_petition_form_url">Petition Form Action</label></td>
-										<td>
-  										<input name="ngp_action_tag_petition_form_action" id="ngp_action_tag_petition_form_action" type="radio" value="message" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_petition_form_message" id="ngp_action_tag_petition_form_message" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_message'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td>
-  										<input name="ngp_action_tag_petition_form_action" id="ngp_action_tag_petition_form_action" type="radio" value="redirect" <?php if(get_option('ngp_action_tag_signup_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_petition_form_redirect" id="ngp_action_tag_petition_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_petition_form_redirect'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-  									<td colspan="3">&nbsp;</td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_volunteer_form_url">Volunteer Form Url</label></td>
-										<td>
-  										/ <input name="ngp_action_tag_volunteer_form_url_slug" id="ngp_action_tag_volunteer_form_url_slug" type="text" value="<?php echo get_option('ngp_action_tag_volunteer_form_url_slug'); ?>" class="small-text" onchange="sanitizeUrl('ngp_action_tag_volunteer_form_url_slug');" /> / 
-											<input name="ngp_action_tag_volunteer_form_url" id="ngp_action_tag_volunteer_form_url" type="text" value="<?php echo get_option('ngp_action_tag_volunteer_form_url'); ?>" class="regular-text" onchange="sanitizeUrl('ngp_action_tag_volunteer_form_url');" />
-										</td>
-										<td><a href="javascript: void(0);" onclick="window.open('/'+document.getElementById('ngp_action_tag_volunteer_form_url_slug').value+'/'+document.getElementById('ngp_action_tag_volunteer_form_url').value, '_blank');" target="_blank">View Page</a></td>
-									</tr>
-									<tr>
-										<td><label for="ngp_action_tag_volunteer_form_url">Volunteer Form Action</label></td>
-										<td>
-  										<input name="ngp_action_tag_volunteer_form_action" id="ngp_action_tag_volunteer_form_action" type="radio" value="message" />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_volunteer_form_message" id="ngp_action_tag_volunteer_form_message" type="text" value="<?php echo get_option('ngp_action_tag_volunteer_form_message'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td>
-  										<input name="ngp_action_tag_volunteer_form_action" id="ngp_action_tag_volunteer_form_action" type="radio" value="redirect" />
-  										&nbsp;&nbsp;<input name="ngp_action_tag_volunteer_form_redirect" id="ngp_action_tag_volunteer_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_volunteer_form_redirect'); ?>" class="regular-text" />
-										</td>
-										<td>&nbsp;</td>
-									</tr>
-								</table>
-								<p style="padding-left:10px;"><?php @submit_button(); ?></p>
-							</form>
+						
+						<form name="ngp_action_tag_type_form" method="post" action="options.php">
+  						<?php @settings_fields('ngp-action-tag-form-settings'); ?>
 							
-						</div> <!-- .inside -->
+							<div class="inside">
+								<select id="ngp_form_selection_type" name="ngp_form_selection_type" onchange="updateType();">
+									<option value="">-Select-</option>
+									<option value="SignupForm" <?php if($ngp_form_selection_type == 'SignupForm'): ?>selected="selected"<?php endif; ?>>Signup Forms</option>
+									<option value="ContributionForm" <?php if($ngp_form_selection_type == 'ContributionForm'): ?>selected="selected"<?php endif; ?>>Contribution Forms</option>
+									<option value="PetitionForm" <?php if($ngp_form_selection_type == 'PetitionForm'): ?>selected="selected"<?php endif; ?>>Petition Forms</option>
+									<option value="VolunteerForm" <?php if($ngp_form_selection_type == 'VolunteerForm'): ?>selected="selected"<?php endif; ?>>Volunteer Forms</option>
+								</select>&nbsp;&nbsp;
+								<select id="ngp_form_selection_form" name="ngp_form_selection_form" onchange="updateForm();" style="display: none;">
+									<option value="">-Select-</option>
+									<?php foreach($forms as $form): ?>
+									<option class="<?php echo $form->type; ?>" value="<?php echo $form->obfuscatedId; ?>" <?php if($ngp_form_selection_form == $form->obfuscatedId): ?>selected="selected"<?php endif; ?>><?php echo $form->name; ?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+							
+							<?php foreach($forms as $form): ?>
+								<div id="form_<?php echo $form->obfuscatedId; ?>" class="form" style="display:none;">
+									<h3><span><?php echo $form->name; ?> (<?php echo $form->type; ?>)</span></h3>
+									<div class="inside">
+										<table class="form-table">
+											<tr>
+												<td style="width: 260px;"><label for="signup_form_slug">Slug</label></td>
+												<td style="width: 500px;"><?php echo strtolower(str_replace(' ', '-', $form->name)); ?></td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="width: 260px;"><label for="ngp_form_<?php echo $form->obfuscatedId; ?>_message">Display Message</label></td>
+												<td style="width: 500px;">
+													<input type="radio" name="ngp_form_action[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_action_message" value="message" <?php if($ngp_form_action[$form->obfuscatedId] == 'message'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
+													<input name="ngp_form_message[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_message" type="text" value="<?php echo $ngp_form_message[$form->obfuscatedId]; ?>" class="regular-text" />
+												</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="width: 260px;"><label for="ngp_form_<?php echo $form->obfuscatedId; ?>_redirect">Redirect Page</label></td>
+												<td style="width: 500px;">
+													<input type="radio" name="ngp_form_action[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_action_redirect" value="redirect" <?php if($ngp_form_action[$form->obfuscatedId] == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
+													<input name="ngp_form_redirect[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_redirect" type="text" value="<?php echo $ngp_form_redirect[$form->obfuscatedId]; ?>" class="regular-text" />
+												</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="width: 260px;"><label for="ngp_form_<?php echo $form->obfuscatedId; ?>_redirect">No (Default) Action</label></td>
+												<td style="width: 500px;">
+													<input type="radio" name="ngp_form_action[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_action_none" value="" <?php if($ngp_form_action[$form->obfuscatedId] == ''): ?>checked="checked"<?php endif; ?> />
+												</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+		  									<td colspan="3">&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="width: 260px;"><label for="ngp_form_<?php echo $form->obfuscatedId; ?>_template">Template</label></td>
+												<td style="width: 500px;">
+													<input name="ngp_form_template[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_template" type="text" value="<?php echo $ngp_form_template[$form->obfuscatedId]; ?>" class="regular-text" />
+												</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="width: 260px;"><label for="ngp_form_<?php echo $form->obfuscatedId; ?>_labels">Labels</label></td>
+												<td style="width: 500px;">
+													<input name="ngp_form_labels[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_labels" type="text" value="<?php echo $ngp_form_labels[$form->obfuscatedId]; ?>" class="regular-text" />
+												</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="width: 260px;"><label for="ngp_form_<?php echo $form->obfuscatedId; ?>_databags">Databags</label></td>
+												<td style="width: 500px;">
+													<input name="ngp_form_databags[<?php echo $form->obfuscatedId; ?>]" id="ngp_form_<?php echo $form->obfuscatedId; ?>_databags" type="text" value="<?php echo $ngp_form_databags[$form->obfuscatedId]; ?>" class="regular-text" />
+												</td>
+												<td>&nbsp;</td>
+											</tr>
+											<tr>
+		  									<td colspan="3">&nbsp;</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							<?php endforeach; ?>
+							
+							<div id="form_save" class="inside">
+								<p style="padding-left:10px;"><?php @submit_button(); ?></p>
+							</div>
+						</form>		
 					</div>
-					
-					<?php if(!empty($forms)): ?>
-					<div class="postbox">
-						
-						<h3><span>Available Forms</span></h3>
-
-						<div class="inside">
-							<table class="wp-list-table widefat fixed " cellspacing="0">
-  							<thead>
-    							<tr>
-      							<th class="manage-column column-id">ID</th>
-      							<th class="manage-column column-name">Name</th>
-                    <th class="manage-column column-status">Type</th>
-                    <th class="manage-column column-shortcode" style="width: 500px;">Shortcode Tag</th>
-    							</tr>
-  							</thead>
-  							<tbody>
-  							<?php foreach($forms as $form): ?>
-    							<tr>
-      							<td><?php echo $form->obfuscatedId; ?></td>
-      							<td><?php echo $form->name; ?></td>
-                    <td><?php echo $form->type; ?></td>
-                    <td>[actiontag id="<?php echo $form->obfuscatedId; ?>" success="Thank You!"]</td>
-    							</tr>
-  							<?php endforeach; ?>
-  							</tbody>
-							</table>
-						</div> <!-- .inside -->
-						
-					</div> <!-- .postbox -->
-					<?php endif; ?>
-					
-				</div> <!-- .meta-box-sortables .ui-sortable -->
-				
-			</div> <!-- post-body-content -->
-			
-			<!-- sidebar -->
-		
-		</div> <!-- #post-body .metabox-holder .columns-2 -->
-		
+				</div>
+			</div>
+		</div>
 		<br class="clear">
-	</div> <!-- #poststuff -->
-	
-</div> <!-- .wrap -->
+	</div>
+</div>
 
 <script type="text/javascript">
-  function sanitizeUrl(id) {
-		var url = document.getElementById(id).value;
-		url = url.toLowerCase().replace(/[^a-z0-9\. -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
-    
-		document.getElementById(id).value = url;
+	jQuery(document).ready(function() {
+		updateType();
+		updateForm();
+	});
+	
+	function updateType() {
+		if(jQuery('#ngp_form_selection_type').val() == '') {
+			jQuery('#ngp_form_selection_form').hide();
+			jQuery('.form').hide();
+			jQuery('#form_save').hide();
+		} else {
+			jQuery('#ngp_form_selection_form').show();
+			jQuery('#ngp_form_selection_form > option').hide();
+			jQuery('#ngp_form_selection_form > option.'+jQuery('#ngp_form_selection_type').val()).show();
+			
+			updateForm();
+		}
+	}
+	
+	function updateForm() {
+		if(jQuery('#ngp_form_selection_form').val() == '') {
+			jQuery('.form').hide();
+			jQuery('#form_save').hide();
+		} else {
+			jQuery('.form').hide();
+			jQuery('#form_save').show();
+			jQuery('#form_'+jQuery('#ngp_form_selection_form').val()).show();
+		}
 	}
 </script>

@@ -39,10 +39,17 @@
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Redirect Pages</label></td>
+										<td style="width: 260px;"><label for="default_form_action">Redirect Page</label></td>
 										<td style="width: 500px;">
 											<input type="radio" name="default_form_action" id="default_form_action_redirect" value="redirect" <?php if(get_option('default_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
 											<input name="default_form_redirect" id="default_form_redirect" type="text" value="<?php echo get_option('default_form_redirect'); ?>" class="regular-text" />
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width: 260px;"><label for="default_form_action">No (Default) Action</label></td>
+										<td style="width: 500px;">
+											<input type="radio" name="default_form_action" id="default_form_action_none" value="" <?php if(get_option('default_form_action') == ''): ?>checked="checked"<?php endif; ?> />
 										</td>
 										<td>&nbsp;</td>
 									</tr>

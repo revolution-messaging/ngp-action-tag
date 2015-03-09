@@ -27,10 +27,17 @@
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Redirect Pages</label></td>
+										<td style="width: 260px;"><label for="default_form_action">Redirect Page</label></td>
 										<td style="width: 500px;">
 											<input type="radio" name="signup_form_action" id="signup_form_action_redirect" value="redirect" <?php if(get_option('signup_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
 											<input name="signup_form_redirect" id="signup_form_redirect" type="text" value="<?php echo get_option('signup_form_redirect'); ?>" class="regular-text" />
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width: 260px;"><label for="default_form_action">No (Default) Action</label></td>
+										<td style="width: 500px;">
+											<input type="radio" name="signup_form_action" id="signup_form_action_none" value="" <?php if(get_option('signup_form_action') == ''): ?>checked="checked"<?php endif; ?> />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
@@ -83,10 +90,17 @@
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Redirect Pages</label></td>
+										<td style="width: 260px;"><label for="default_form_action">Redirect Page</label></td>
 										<td style="width: 500px;">
 											<input type="radio" name="contribution_form_action" id="contribution_form_action_redirect" value="redirect" <?php if(get_option('contribution_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
 											<input name="contribution_form_redirect" id="contribution_form_redirect" type="text" value="<?php echo get_option('contribution_form_redirect'); ?>" class="regular-text" />
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width: 260px;"><label for="default_form_action">No (Default) Action</label></td>
+										<td style="width: 500px;">
+											<input type="radio" name="contribution_form_action" id="contribution_form_action_none" value="" <?php if(get_option('contribution_form_action') == ''): ?>checked="checked"<?php endif; ?> />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
@@ -139,10 +153,17 @@
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="petition_form_action">Redirect Pages</label></td>
+										<td style="width: 260px;"><label for="petition_form_action">Redirect Page</label></td>
 										<td style="width: 500px;">
 											<input type="radio" name="petition_form_action" id="petition_form_action_redirect" value="redirect" <?php if(get_option('petition_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
 											<input name="petition_form_redirect" id="petition_form_redirect" type="text" value="<?php echo get_option('petition_form_redirect'); ?>" class="regular-text" />
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width: 260px;"><label for="default_form_action">No (Default) Action</label></td>
+										<td style="width: 500px;">
+											<input type="radio" name="petition_form_action" id="petition_form_action_none" value="" <?php if(get_option('petition_form_action') == ''): ?>checked="checked"<?php endif; ?> />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
@@ -196,10 +217,17 @@
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="volunteer_form_action">Redirect Pages</label></td>
+										<td style="width: 260px;"><label for="volunteer_form_action">Redirect Page</label></td>
 										<td style="width: 500px;">
 											<input type="radio" name="volunteer_form_action" id="default_form_action_redirect" value="redirect" <?php if(get_option('volunteer_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
 											<input name="volunteer_form_redirect" id="volunteer_form_redirect" type="text" value="<?php echo get_option('volunteer_form_redirect'); ?>" class="regular-text" />
+										</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width: 260px;"><label for="default_form_action">No (Default) Action</label></td>
+										<td style="width: 500px;">
+											<input type="radio" name="volunteer_form_action" id="volunteer_form_action_none" value="" <?php if(get_option('volunteer_form_action') == ''): ?>checked="checked"<?php endif; ?> />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
@@ -233,7 +261,9 @@
 								</table>
 							</div>
 							
-							<p style="padding-left:10px;"><?php @submit_button(); ?></p>
+							<div class="inside">
+								<p style="padding-left:10px;"><?php @submit_button(); ?></p>
+							</div>
 						</form>
 					</div>
 				</div>

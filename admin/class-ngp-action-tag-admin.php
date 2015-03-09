@@ -68,14 +68,14 @@ class NGPActionTag_Admin {
     register_setting('ngp-action-tag-type-settings', 'petition_form_databags');
     register_setting('ngp-action-tag-type-settings', 'volunteer_form_databags');
     
-    /*register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_signup_form_message');
-    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_contribution_form_message');
-    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_petition_form_message');
-    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_volunteer_form_message');
-    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_signup_form_redirect');
-    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_contribution_form_redirect');
-    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_petition_form_redirect');
-    register_setting('ngp-action-tag-settings-group', 'ngp_action_tag_volunteer_form_redirect');*/
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_message');
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_redirect');
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_action');
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_template');
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_labels');
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_databags');
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_selection_type');
+    register_setting('ngp-action-tag-form-settings', 'ngp_form_selection_form');
   }
   
   public function global_settings() {
@@ -124,6 +124,15 @@ class NGPActionTag_Admin {
 	public function form_settings() {
 		
 		$forms = $this->api->load_forms();
+		
+		$ngp_form_message = get_option('ngp_form_message');
+    $ngp_form_redirect = get_option('ngp_form_redirect');
+    $ngp_form_action = get_option('ngp_form_action');
+    $ngp_form_template = get_option('ngp_form_template');
+    $ngp_form_labels = get_option('ngp_form_labels');
+    $ngp_form_databags = get_option('ngp_form_databags');
+    $ngp_form_selection_type = get_option('ngp_form_selection_type');
+    $ngp_form_selection_form = get_option('ngp_form_selection_form');
 		
 		include 'templates/form_settings.php';
 	}
