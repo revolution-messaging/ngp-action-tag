@@ -17,7 +17,6 @@
 
 						<div class="inside">
 							<form name="ngp_action_tag_apikey_form" method="post" action="options.php">
-
   							<?php @settings_fields('ngp-action-tag-settings-group'); ?>
 								<table class="form-table">
 									<tr>

@@ -49,9 +49,58 @@ class NGPActionTag_Site {
     
     if(!empty($template_file)) {
       
-      $action = get_option('ngp_action_tag_'.$this->page_type.'_form_action');
-      $redirect = get_option('ngp_action_tag_'.$this->page_type.'_form_redirect');
-      $message = get_option('ngp_action_tag_'.$this->page_type.'_form_message');
+      $action = get_option('ngp_form_'.$form->obfurscatedId.'_action');
+      $redirect = get_option('ngp_form_'.$form->obfurscatedId.'_redirect');
+      $message = get_option('ngp_form_'.$form->obfurscatedId.'_message');
+      $template = get_option('ngp_form_'.$form->obfurscatedId.'_template');
+      $labels = get_option('ngp_form_'.$form->obfurscatedId.'_labels');
+      $databags = get_option('ngp_form_'.$form->obfurscatedId.'_databags');
+      
+      if($action == '') {
+	    	
+	    	$action = get_option($this->page_type.'_form_template');
+				
+				if($action == '') {
+					
+					$action = get_option('default_form_action');
+					$redirect = get_option('default_form_redirect');
+					$message = get_option('default_form_message');
+				} else {
+					
+					$redirect = get_option($this->page_type.'_form_redirect');
+					$message = get_option($this->page_type.'_form_message');
+				}
+	    }
+	    
+	    if($template == '') {
+		  	
+				$template = get_option($this->page_type.'_form_template');
+				
+				if($template == '') {
+					
+					$template = get_option('default_data_template');
+				}
+		  }
+		  
+		  if($labels == '') {
+		  	
+				$labels = get_option($this->page_type.'_form_template');
+				
+				if($labels == '') {
+					
+					$labels = get_option('default_data_labels');
+				}
+		  }
+			
+			if($databags == '') {
+		  	
+				$databags = get_option($this->page_type.'_form_template');
+				
+				if($databags == '') {
+					
+					$databags = get_option('default_data_databags');
+				}
+		  }
       
       include $template_file;
     } else {

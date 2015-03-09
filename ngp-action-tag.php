@@ -22,7 +22,7 @@ class NGPActionTag {
   public function __construct() {
     
     $this->plugin_slug = 'ngp-action-tag';
-    $this->version = '2.0.0'; 
+    $this->version = '2.1.0'; 
     
     $this->load_dependencies();
     
