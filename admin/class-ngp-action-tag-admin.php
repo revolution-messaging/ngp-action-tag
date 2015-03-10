@@ -23,59 +23,62 @@ class NGPActionTag_Admin {
   public function register_settings() {
     
     // API Level Settings
-    register_setting('ngp-action-tag-global-settings', 'api_key');
-    register_setting('ngp-action-tag-global-settings', 'endpoint');
-    register_setting('ngp-action-tag-global-settings', 'default_form_action');
-    register_setting('ngp-action-tag-global-settings', 'default_form_message');
-    register_setting('ngp-action-tag-global-settings', 'default_form_redirect');
-    register_setting('ngp-action-tag-global-settings', 'default_data_template');
-    register_setting('ngp-action-tag-global-settings', 'default_data_labels');
-    register_setting('ngp-action-tag-global-settings', 'default_data_databags');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_api_key');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_endpoint');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_form_action');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_form_message');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_form_redirect');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_data_template');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_data_labels');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_data_databags');
     
     // Page Type Settings
-    register_setting('ngp-action-tag-type-settings', 'signup_form_slug');
-    register_setting('ngp-action-tag-type-settings', 'contribution_form_slug');
-    register_setting('ngp-action-tag-type-settings', 'petition_form_slug');
-    register_setting('ngp-action-tag-type-settings', 'volunteer_form_slug');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_slug');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_slug');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_slug');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_slug');
     
-    register_setting('ngp-action-tag-type-settings', 'signup_form_action');
-    register_setting('ngp-action-tag-type-settings', 'contribution_form_action');
-    register_setting('ngp-action-tag-type-settings', 'petition_form_action');
-    register_setting('ngp-action-tag-type-settings', 'volunteer_form_action');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_action');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_action');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_action');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_action');
     
-    register_setting('ngp-action-tag-type-settings', 'signup_form_message');
-    register_setting('ngp-action-tag-type-settings', 'contribution_form_message');
-    register_setting('ngp-action-tag-type-settings', 'petition_form_message');
-    register_setting('ngp-action-tag-type-settings', 'volunteer_form_message');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_message');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_message');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_message');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_message');
     
-    register_setting('ngp-action-tag-type-settings', 'signup_form_redirect');
-    register_setting('ngp-action-tag-type-settings', 'contribution_form_redirect');
-    register_setting('ngp-action-tag-type-settings', 'petition_form_redirect');
-    register_setting('ngp-action-tag-type-settings', 'volunteer_form_redirect');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_redirect');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_redirect');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_redirect');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_redirect');
     
-    register_setting('ngp-action-tag-type-settings', 'signup_form_template');
-    register_setting('ngp-action-tag-type-settings', 'contribution_form_template');
-    register_setting('ngp-action-tag-type-settings', 'petition_form_template');
-    register_setting('ngp-action-tag-type-settings', 'volunteer_form_template');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_template');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_template');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_template');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_template');
     
-    register_setting('ngp-action-tag-type-settings', 'signup_form_labels');
-    register_setting('ngp-action-tag-type-settings', 'contribution_form_labels');
-    register_setting('ngp-action-tag-type-settings', 'petition_form_labels');
-    register_setting('ngp-action-tag-type-settings', 'volunteer_form_labels');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_labels');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_labels');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_labels');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_labels');
     
-    register_setting('ngp-action-tag-type-settings', 'signup_form_databags');
-    register_setting('ngp-action-tag-type-settings', 'contribution_form_databags');
-    register_setting('ngp-action-tag-type-settings', 'petition_form_databags');
-    register_setting('ngp-action-tag-type-settings', 'volunteer_form_databags');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_databags');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_databags');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_databags');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_databags');
     
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_message');
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_redirect');
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_action');
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_template');
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_labels');
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_databags');
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_selection_type');
-    register_setting('ngp-action-tag-form-settings', 'ngp_form_selection_form');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_message');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_redirect');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_action');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_template');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_labels');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_databags');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_type');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_form_signup');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_form_contribution');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_form_petition');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_form_volunteer');
   }
   
   public function global_settings() {
@@ -88,28 +91,28 @@ class NGPActionTag_Admin {
 	  
 	  $update_rewrites = false;
 	  
-	  if(get_option('signup_form_slug') != '') {
+	  if(get_option('ngp_action_tag_signup_form_slug') != '') {
       
       $update_rewrites = true;
-      add_rewrite_rule('^'.get_option('signup_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=signup&ngp_actiontag_name=$1', 'top'); 
+      add_rewrite_rule('^'.get_option('ngp_action_tag_signup_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=signup&ngp_actiontag_name=$matches[1]', 'top'); 
     }
     
-    if(get_option('contribution_form_slug') != '') {
+    if(get_option('ngp_action_tag_contribution_form_slug') != '') {
       
       $update_rewrites = true;
-      add_rewrite_rule('^'.get_option('contribution_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=contribution&ngp_actiontag_name=$1', 'top'); 
+      add_rewrite_rule('^'.get_option('ngp_action_tag_contribution_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=contribution&ngp_actiontag_name=$matches[1]', 'top'); 
     }
     
-    if(get_option('petition_form_slug') != '') {
+    if(get_option('ngp_action_tag_petition_form_slug') != '') {
       
       $update_rewrites = true;
-      add_rewrite_rule('^'.get_option('petition_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=petition&ngp_actiontag_name=$1', 'top'); 
+      add_rewrite_rule('^'.get_option('ngp_action_tag_petition_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=petition&ngp_actiontag_name=$matches[1]', 'top'); 
     }
     
-    if(get_option('volunteer_form_slug') != '') {
+    if(get_option('ngp_action_tag_volunteer_form_slug') != '') {
       
       $update_rewrites = true;
-      add_rewrite_rule('^'.get_option('volunteer_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=volunteer&ngp_actiontag_name=$1', 'top'); 
+      add_rewrite_rule('^'.get_option('ngp_action_tag_volunteer_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=volunteer&ngp_actiontag_name=$matches[1]', 'top'); 
     }
     
     if($update_rewrites) {
@@ -125,14 +128,17 @@ class NGPActionTag_Admin {
 		
 		$forms = $this->api->load_forms();
 		
-		$ngp_form_message = get_option('ngp_form_message');
-    $ngp_form_redirect = get_option('ngp_form_redirect');
-    $ngp_form_action = get_option('ngp_form_action');
-    $ngp_form_template = get_option('ngp_form_template');
-    $ngp_form_labels = get_option('ngp_form_labels');
-    $ngp_form_databags = get_option('ngp_form_databags');
-    $ngp_form_selection_type = get_option('ngp_form_selection_type');
-    $ngp_form_selection_form = get_option('ngp_form_selection_form');
+		$ngp_action_tag_form_message = get_option('ngp_action_tag_form_message');
+    $ngp_action_tag_form_redirect = get_option('ngp_action_tag_form_redirect');
+    $ngp_action_tag_form_action = get_option('ngp_action_tag_form_action');
+    $ngp_action_tag_form_template = get_option('ngp_action_tag_form_template');
+    $ngp_action_tag_form_labels = get_option('ngp_action_tag_form_labels');
+    $ngp_action_tag_form_databags = get_option('ngp_action_tag_form_databags');
+    $ngp_action_tag_form_selection_type = get_option('ngp_action_tag_form_selection_type');
+    $ngp_action_tag_form_selection_form_signup = get_option('ngp_action_tag_form_selection_form_signup');
+    $ngp_action_tag_form_selection_form_contribution = get_option('ngp_action_tag_form_selection_form_contribution');
+    $ngp_action_tag_form_selection_form_petition = get_option('ngp_action_tag_form_selection_form_petition');
+    $ngp_action_tag_form_selection_form_volunteer = get_option('ngp_action_tag_form_selection_form_volunteer');
 		
 		include 'templates/form_settings.php';
 	}

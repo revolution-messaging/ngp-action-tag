@@ -13,7 +13,7 @@ class NGPActionTag_API {
   public function __construct() {
     
     $this->api_base = get_option('ngp_action_tag_endpoint');
-    $this->api_key = get_option('ngp_action_tag_apikey');
+    $this->api_key = get_option('ngp_action_tag_api_key');
     
     $this->api_base = ($this->api_base == '' ? NGPActionTag::NGP_API_ENDPOINT : $this->api_base);
   }
@@ -30,7 +30,8 @@ class NGPActionTag_API {
         
         // Make sure to only send back forms with the published status.
         if($form->status == 'Published') {
-        
+        	
+        	$form->slug = $this->name_to_slug($form->name);
           $forms[] = $form;    
         }
       }
@@ -47,8 +48,8 @@ class NGPActionTag_API {
     $selected_form = null;
     
     foreach($forms as $key => $form) {
-        
-      if($form->name == $id) {
+      
+      if($form->slug == $id) {
         
         if($type == self::SIGNUP_FORM && $form->type == 'SignupForm') {
           
@@ -113,4 +114,9 @@ class NGPActionTag_API {
     
     return $return;
   }
+  
+  private function name_to_slug($name) {
+		
+		return trim(trim(strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $name))), '-'); 
+	}
 }

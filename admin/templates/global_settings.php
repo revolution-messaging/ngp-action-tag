@@ -12,13 +12,13 @@
 							<div class="inside">
 								<table class="form-table">
 									<tr>
-										<td style="width: 260px;"><label for="api_key">API Key</label></td>
-										<td style="width: 500px;"><input name="api_key" id="api_key" type="text" value="<?php echo get_option('api_key'); ?>" class="regular-text" /></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_api_key">API Key</label></td>
+										<td style="width: 500px;"><input name="ngp_action_tag_api_key" id="ngp_action_tag_api_key" type="text" value="<?php echo get_option('ngp_action_tag_api_key'); ?>" class="regular-text" /></td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td><label for="endpoint">API Endpoint</label><br /><em class="ngp-info">Use https://api1.myngp.com for testing</em></td>
-										<td><input name="endpoint" id="endpoint" type="text" value="<?php echo get_option('endpoint'); ?>" class="regular-text" /></td>
+										<td><label for="ngp_action_tag_endpoint">API Endpoint</label><br /><em class="ngp-info">Use https://api1.myngp.com for testing</em></td>
+										<td><input name="ngp_action_tag_endpoint" id="ngp_action_tag_endpoint" type="text" value="<?php echo get_option('ngp_action_tag_endpoint'); ?>" class="regular-text" /></td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
@@ -31,25 +31,25 @@
 							<div class="inside">
 								<table class="form-table">
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Display Message</label></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Display Message</label></td>
 										<td style="width: 500px;">
-											<input type="radio" name="default_form_action" id="default_form_action_message" value="message" <?php if(get_option('default_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
-											<input name="default_form_message" id="default_form_message" type="text" value="<?php echo get_option('default_form_message'); ?>" class="regular-text" />
+											<input type="radio" name="ngp_action_tag_default_form_action" id="ngp_action_tag_default_form_action_message" value="message" <?php if(get_option('ngp_action_tag_default_form_action') == 'message'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
+											<input name="ngp_action_tag_default_form_message" id="ngp_action_tag_default_form_message" type="text" value="<?php echo get_option('ngp_action_tag_default_form_message'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Redirect Page</label></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Redirect Page</label></td>
 										<td style="width: 500px;">
-											<input type="radio" name="default_form_action" id="default_form_action_redirect" value="redirect" <?php if(get_option('default_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
-											<input name="default_form_redirect" id="default_form_redirect" type="text" value="<?php echo get_option('default_form_redirect'); ?>" class="regular-text" />
+											<input type="radio" name="ngp_action_tag_default_form_action" id="ngp_action_tag_default_form_action_redirect" value="redirect" <?php if(get_option('ngp_action_tag_default_form_action') == 'redirect'): ?>checked="checked"<?php endif; ?> />&nbsp;&nbsp;
+											<input name="ngp_action_tag_default_form_redirect" id="ngp_action_tag_default_form_redirect" type="text" value="<?php echo get_option('ngp_action_tag_default_form_redirect'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">No (Default) Action</label></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">No (Default) Action</label></td>
 										<td style="width: 500px;">
-											<input type="radio" name="default_form_action" id="default_form_action_none" value="" <?php if(get_option('default_form_action') == ''): ?>checked="checked"<?php endif; ?> />
+											<input type="radio" name="ngp_action_tag_default_form_action" id="ngp_action_tag_default_form_action_none" value="" <?php if(get_option('ngp_action_tag_default_form_action') == ''): ?>checked="checked"<?php endif; ?> />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
@@ -63,23 +63,23 @@
 							<div class="inside">
 								<table class="form-table">
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Template</label></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Template</label></td>
 										<td style="width: 500px;">
-											<input name="default_data_template" id="default_data_template" type="text" value="<?php echo get_option('default_data_template'); ?>" class="regular-text" />
+											<input name="ngp_action_tag_default_data_template" id="ngp_action_tag_default_data_template" type="text" value="<?php echo get_option('ngp_action_tag_default_data_template'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Labels</label></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Labels</label></td>
 										<td style="width: 500px;">
-											<input name="default_data_labels" id="default_data_labels" type="text" value="<?php echo get_option('default_data_labels'); ?>" class="regular-text" />
+											<input name="ngp_action_tag_default_data_labels" id="ngp_action_tag_default_data_labels" type="text" value="<?php echo get_option('ngp_action_tag_default_data_labels'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="default_form_action">Databags</label></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Databags</label></td>
 										<td style="width: 500px;">
-											<input name="default_data_databags" id="default_data_databags" type="text" value="<?php echo get_option('default_data_databags'); ?>" class="regular-text" />
+											<input name="ngp_action_tag_default_data_databags" id="ngp_action_tag_default_data_databags" type="text" value="<?php echo get_option('ngp_action_tag_default_data_databags'); ?>" class="regular-text" />
 										</td>
 										<td>&nbsp;</td>
 									</tr>
