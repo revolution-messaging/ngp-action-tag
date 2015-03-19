@@ -52,14 +52,14 @@ class NGPActionTag_Site {
     $message_listing = get_option('ngp_action_tag_form_message');
     $template_listing = get_option('ngp_action_tag_form_template');
     $labels_listing = get_option('ngp_action_tag_form_labels');
-    $databags_listing = get_option('ngp_action_tag_form_databags');
+    $databag_listing = get_option('ngp_action_tag_form_databag');
     
     $action = (isset($action_listing[$form->obfuscatedId]) ? $action_listing[$form->obfuscatedId] : '');
     $redirect = (isset($redirect_listing[$form->obfuscatedId]) ? $redirect_listing[$form->obfuscatedId] : '');
     $message = (isset($message_listing[$form->obfuscatedId]) ? $message_listing[$form->obfuscatedId] : '');
     $template = (isset($template_listing[$form->obfuscatedId]) ? $template_listing[$form->obfuscatedId] : '');
     $labels = (isset($labels_listing[$form->obfuscatedId]) ? $labels_listing[$form->obfuscatedId] : '');
-    $databags = (isset($databags_listing[$form->obfuscatedId]) ? $databags_listing[$form->obfuscatedId] : '');
+    $databag = (isset($databag_listing[$form->obfuscatedId]) ? $databag_listing[$form->obfuscatedId] : '');
     
     if($action == '') {
     	
@@ -97,13 +97,13 @@ class NGPActionTag_Site {
 			}
 	  }
 		
-		if($databags == '') {
+		if($databag == '') {
 	  	
-			$databags = get_option('ngp_action_tag_'.$this->page_type.'_form_databags');
+			$databag = get_option('ngp_action_tag_'.$this->page_type.'_form_databag');
 			
-			if($databags == '') {
+			if($databag == '') {
 				
-				$databags = get_option('ngp_action_tag_default_data_databags');
+				$databag = get_option('ngp_action_tag_default_data_databag');
 			}
 	  }
     
@@ -125,14 +125,14 @@ class NGPActionTag_Site {
       'success' => '',
       'template' => '',
       'labels' => '',
-      'databags' => '',
+      'databag' => '',
     ), $attributes);
     
     $is_url = filter_var($a['success'], FILTER_VALIDATE_URL);
     $endpoint = get_option('ngp_action_tag_endpoint');
     
     $output  = '<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>';
-    $output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').' '.($a['template'] != '' ? 'data-template="'.$a['template'].'"' : '').' '.($a['labels'] != '' ? 'data-labels="'.$a['labels'].'"' : '').' '.($a['databags'] != '' ? 'data-databags="'.$a['databags'].'"' : '').'></div>';
+    $output .= '<div class="ngp-form" data-id="'.$a['id'].'" '.($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : '').' '.($a['template'] != '' ? 'data-template="'.$a['template'].'"' : '').' '.($a['labels'] != '' ? 'data-labels="'.$a['labels'].'"' : '').' '.($a['databag'] != '' ? 'data-databag="'.$a['databag'].'"' : '').'></div>';
     $output .= '<script type="text/javascript">var segueCallback = function() { '.($is_url ? 'window.location.href="'.$a['success'].'";' : 'alert("'.$a['success'].'");').' }; ';
     $output .= 'var nvtag_callbacks = nvtag_callbacks || {}; ';
     $output .= 'nvtag_callbacks.preSegue = nvtag_callbacks.segueCallback || []; ';

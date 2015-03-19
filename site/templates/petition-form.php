@@ -17,7 +17,7 @@ get_header(); ?>
 	<?php else: ?>
 	  
   	<script type="text/javascript" src="//d1aqhv4sn5kxtx.cloudfront.net/nvtag.js"></script>
-    <div class="ngp-form" data-id="<?php echo $form->obfuscatedId; ?>" <?php echo ($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : ''); ?> <?php echo ($template != '' ? 'data-template="'.$template.'"' : ''); ?> <?php echo ($labels != '' ? 'data-labels="'.$labels.'"' : ''); ?> <?php echo ($databags != '' ? 'data-databags="'.$databags.'"' : ''); ?>></div>
+    <div class="ngp-form" data-id="<?php echo $form->obfuscatedId; ?>" <?php echo ($endpoint != '' ? 'data-endpoint="'.$endpoint.'"' : ''); ?> <?php echo ($template != '' ? 'data-template="'.$template.'"' : ''); ?> <?php echo ($labels != '' ? 'data-labels="'.$labels.'"' : ''); ?> <?php echo ($databag != '' ? 'data-databag="'.$databag.'"' : ''); ?>></div>
     <script type="text/javascript">
       var segueCallback = function() { <?php if($action == 'redirect'): ?>window.location.href='<?php echo $redirect; ?>';<?php elseif($action == 'message'): ?>alert('<?php echo $message; ?>');<?php endif; ?>};
       var nvtag_callbacks = nvtag_callbacks || {};

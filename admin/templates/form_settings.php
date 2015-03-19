@@ -8,6 +8,7 @@
 					<div class="postbox">
 						
 						<form name="ngp_action_tag_type_form" method="post" action="options.php">
+  						<?php settings_errors(); ?>
   						<?php @settings_fields('ngp-action-tag-form-settings'); ?>
 							
 							<h3><span>Select from a form below</span></h3>
@@ -69,6 +70,31 @@
 												<td style="width: 500px;"><?php echo $form->slug; ?></td>
 												<td>&nbsp;</td>
 											</tr>
+											<?php if($form->type == 'SignupForm' && get_option('ngp_action_tag_signup_form_slug') != ''): ?>
+											<tr>
+												<td style="width: 260px;"><label for="">Page URL</label></td>
+												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?></a></td>
+												<td>&nbsp;</td>
+											</tr>
+											<?php elseif($form->type == 'ContributionForm' && get_option('ngp_action_tag_contribution_form_slug') != ''): ?>
+											<tr>
+												<td style="width: 260px;"><label for="">Page URL</label></td>
+												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_contribution_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_contribution_form_slug').'/'.$form->slug; ?></a></td>
+												<td>&nbsp;</td>
+											</tr>
+											<?php elseif($form->type == 'PetitionForm' && get_option('ngp_action_tag_petition_form_slug') != ''): ?>
+											<tr>
+												<td style="width: 260px;"><label for="">Page URL</label></td>
+												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_petition_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_petition_form_slug').'/'.$form->slug; ?></a></td>
+												<td>&nbsp;</td>
+											</tr>
+											<?php elseif($form->type == 'VolunteerForm' && get_option('ngp_action_tag_volunteer_form_slug') != ''): ?>
+											<tr>
+												<td style="width: 260px;"><label for="">Page URL</label></td>
+												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_volunteer_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_volunteer_form_slug').'/'.$form->slug; ?></a></td>
+												<td>&nbsp;</td>
+											</tr>
+											<?php endif; ?>
 											<tr>
 												<td style="width: 260px;"><label for="signup_form_shortcode">Short Code</label></td>
 												<td style="width: 500px;" id="action_tag_snippet_<?php echo $form->obfuscatedId; ?>"></td>
@@ -103,21 +129,34 @@
 											<tr>
 												<td style="width: 260px;"><label for="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_template">Template</label></td>
 												<td style="width: 500px;">
-													<input name="ngp_action_tag_form_template[<?php echo $form->obfuscatedId; ?>]" id="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_template" type="text" value="<?php echo $ngp_action_tag_form_template[$form->obfuscatedId]; ?>" class="regular-text" onkeyup="updateShortCode('<?php echo $form->obfuscatedId; ?>');" />
+													<select name="ngp_action_tag_form_template[<?php echo $form->obfuscatedId; ?>]" id="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_template" onchange="updateShortCode('<?php echo $form->obfuscatedId; ?>');">
+														<option value="">-Select-</option>
+														<option value="minimal" <?php if($ngp_action_tag_form_template[$form->obfuscatedId] == 'minimal'): ?>selected="selected"<?php endif; ?>>Minimal</option>
+														<option value="accelerator" <?php if($ngp_action_tag_form_template[$form->obfuscatedId] == 'accelerator'): ?>selected="selected"<?php endif; ?>>Accelerator</option>
+														<option value="oberon" <?php if($ngp_action_tag_form_template[$form->obfuscatedId] == 'oberon'): ?>selected="selected"<?php endif; ?>>Oberon</option>
+													</select>
 												</td>
 												<td>&nbsp;</td>
 											</tr>
 											<tr>
 												<td style="width: 260px;"><label for="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_labels">Labels</label></td>
 												<td style="width: 500px;">
-													<input name="ngp_action_tag_form_labels[<?php echo $form->obfuscatedId; ?>]" id="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_labels" type="text" value="<?php echo $ngp_action_tag_form_labels[$form->obfuscatedId]; ?>" class="regular-text" onkeyup="updateShortCode('<?php echo $form->obfuscatedId; ?>');" />
+													<select name="ngp_action_tag_form_labels[<?php echo $form->obfuscatedId; ?>]" id="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_labels" onchange="updateShortCode('<?php echo $form->obfuscatedId; ?>');">
+														<option value="">-Select-</option>
+														<option value="inline" <?php if($ngp_action_tag_form_labels[$form->obfuscatedId] == 'inline'): ?>selected="selected"<?php endif; ?>>Inline</option>
+														<option value="above" <?php if($ngp_action_tag_form_labels[$form->obfuscatedId] == 'above'): ?>selected="selected"<?php endif; ?>>Above</option>
+													</select>
 												</td>
 												<td>&nbsp;</td>
 											</tr>
 											<tr>
-												<td style="width: 260px;"><label for="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_databags">Databags</label></td>
+												<td style="width: 260px;"><label for="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_databag">Databag</label></td>
 												<td style="width: 500px;">
-													<input name="ngp_action_tag_form_databags[<?php echo $form->obfuscatedId; ?>]" id="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_databags" type="text" value="<?php echo $ngp_action_tag_form_databags[$form->obfuscatedId]; ?>" class="regular-text" onkeyup="updateShortCode('<?php echo $form->obfuscatedId; ?>');" />
+													<select name="ngp_action_tag_form_databag[<?php echo $form->obfuscatedId; ?>]" id="ngp_action_tag_form_<?php echo $form->obfuscatedId; ?>_databag" onchange="updateShortCode('<?php echo $form->obfuscatedId; ?>');">
+														<option value="">-Select-</option>
+														<option value="nobody" <?php if($ngp_action_tag_form_databag[$form->obfuscatedId] == 'nobody'): ?>selected="selected"<?php endif; ?>>Nobody</option>
+														<option value="everybody" <?php if($ngp_action_tag_form_databag[$form->obfuscatedId] == 'everybody'): ?>selected="selected"<?php endif; ?>>Everybody</option>
+													</select>
 												</td>
 												<td>&nbsp;</td>
 											</tr>
@@ -180,7 +219,7 @@
 		snippet += (jQuery('#ngp_action_tag_form_'+id+'_action_redirect').attr('checked') ? 'success="'+jQuery('#ngp_action_tag_form_'+id+'_redirect').val()+'" ' : '');
 		snippet += (jQuery('#ngp_action_tag_form_'+id+'_template').val() != '' ? 'template="'+jQuery('#ngp_action_tag_form_'+id+'_template').val()+'" ' : '');
 		snippet += (jQuery('#ngp_action_tag_form_'+id+'_labels').val() != '' ? 'labels="'+jQuery('#ngp_action_tag_form_'+id+'_labels').val()+'" ' : '');
-		snippet += (jQuery('#ngp_action_tag_form_'+id+'_databags').val() != '' ? 'databags="'+jQuery('#ngp_action_tag_form_'+id+'_databags').val()+'" ' : '');
+		snippet += (jQuery('#ngp_action_tag_form_'+id+'_databag').val() != '' ? 'databag="'+jQuery('#ngp_action_tag_form_'+id+'_databag').val()+'" ' : '');
 		snippet += ']';
 		
 		jQuery('#action_tag_snippet_'+id).html(snippet);	

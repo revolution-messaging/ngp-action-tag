@@ -7,6 +7,7 @@
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
 						<form name="ngp_action_tag_global_form" method="post" action="options.php">
+							<?php settings_errors(); ?>
   						<?php @settings_fields('ngp-action-tag-global-settings'); ?>
 							<h3><span>API Details</span></h3>
 							<div class="inside">
@@ -65,21 +66,34 @@
 									<tr>
 										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Template</label></td>
 										<td style="width: 500px;">
-											<input name="ngp_action_tag_default_data_template" id="ngp_action_tag_default_data_template" type="text" value="<?php echo get_option('ngp_action_tag_default_data_template'); ?>" class="regular-text" />
+											<select name="ngp_action_tag_default_data_template" id="ngp_action_tag_default_data_template">
+												<option value="">-Select-</option>
+												<option value="minimal" <?php if(get_option('ngp_action_tag_default_data_template') == 'minimal'): ?>selected="selected"<?php endif; ?>>Minimal</option>
+												<option value="accelerator" <?php if(get_option('ngp_action_tag_default_data_template') == 'accelerator'): ?>selected="selected"<?php endif; ?>>Accelerator</option>
+												<option value="oberon" <?php if(get_option('ngp_action_tag_default_data_template') == 'oberon'): ?>selected="selected"<?php endif; ?>>Oberon</option>
+											</select>
 										</td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
 										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Labels</label></td>
 										<td style="width: 500px;">
-											<input name="ngp_action_tag_default_data_labels" id="ngp_action_tag_default_data_labels" type="text" value="<?php echo get_option('ngp_action_tag_default_data_labels'); ?>" class="regular-text" />
+											<select name="ngp_action_tag_default_data_labels" id="ngp_action_tag_default_data_labels">
+												<option value="">-Select-</option>
+												<option value="inline" <?php if(get_option('ngp_action_tag_default_data_labels') == 'inline'): ?>selected="selected"<?php endif; ?>>Inline</option>
+												<option value="above" <?php if(get_option('ngp_action_tag_default_data_labels') == 'above'): ?>selected="selected"<?php endif; ?>>Above</option>
+											</select>
 										</td>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Databags</label></td>
+										<td style="width: 260px;"><label for="ngp_action_tag_default_form_action">Databag</label></td>
 										<td style="width: 500px;">
-											<input name="ngp_action_tag_default_data_databags" id="ngp_action_tag_default_data_databags" type="text" value="<?php echo get_option('ngp_action_tag_default_data_databags'); ?>" class="regular-text" />
+											<select name="ngp_action_tag_default_data_databag" id="ngp_action_tag_default_data_databag">
+												<option value="">-Select-</option>
+												<option value="nobody" <?php if(get_option('ngp_action_tag_default_data_databag') == 'nobody'): ?>selected="selected"<?php endif; ?>>Nobody</option>
+												<option value="everybody" <?php if(get_option('ngp_action_tag_default_data_databag') == 'everybody'): ?>selected="selected"<?php endif; ?>>Everybody</option>
+											</select>
 										</td>
 										<td>&nbsp;</td>
 									</tr>

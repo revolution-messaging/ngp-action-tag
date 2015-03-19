@@ -30,7 +30,7 @@ class NGPActionTag_Admin {
     register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_form_redirect');
     register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_data_template');
     register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_data_labels');
-    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_data_databags');
+    register_setting('ngp-action-tag-global-settings', 'ngp_action_tag_default_data_databag');
     
     // Page Type Settings
     register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_slug');
@@ -63,17 +63,17 @@ class NGPActionTag_Admin {
     register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_labels');
     register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_labels');
     
-    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_databags');
-    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_databags');
-    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_databags');
-    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_databags');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_signup_form_databag');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_contribution_form_databag');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_petition_form_databag');
+    register_setting('ngp-action-tag-type-settings', 'ngp_action_tag_volunteer_form_databag');
     
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_message');
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_redirect');
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_action');
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_template');
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_labels');
-    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_databags');
+    register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_databag');
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_type');
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_form_signup');
     register_setting('ngp-action-tag-form-settings', 'ngp_action_tag_form_selection_form_contribution');
@@ -133,7 +133,7 @@ class NGPActionTag_Admin {
     $ngp_action_tag_form_action = get_option('ngp_action_tag_form_action');
     $ngp_action_tag_form_template = get_option('ngp_action_tag_form_template');
     $ngp_action_tag_form_labels = get_option('ngp_action_tag_form_labels');
-    $ngp_action_tag_form_databags = get_option('ngp_action_tag_form_databags');
+    $ngp_action_tag_form_databag = get_option('ngp_action_tag_form_databag');
     $ngp_action_tag_form_selection_type = get_option('ngp_action_tag_form_selection_type');
     $ngp_action_tag_form_selection_form_signup = get_option('ngp_action_tag_form_selection_form_signup');
     $ngp_action_tag_form_selection_form_contribution = get_option('ngp_action_tag_form_selection_form_contribution');
