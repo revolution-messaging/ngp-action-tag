@@ -115,11 +115,8 @@ class NGPActionTag_Admin {
       add_rewrite_rule('^'.get_option('ngp_action_tag_volunteer_form_slug').'/(.*)$', 'index.php?ngp_actiontag_type=volunteer&ngp_actiontag_name=$matches[1]', 'top'); 
     }
     
-    if($update_rewrites) {
-      
-      global $wp_rewrite;
-      $wp_rewrite->flush_rules(false);
-    }
+    global $wp_rewrite;
+    $wp_rewrite->flush_rules(false);
     
 	  include 'templates/type_settings.php';
 	}
