@@ -35,25 +35,51 @@ class NGPActionTag_Site {
   
   public function parse_request(&$wp) {
     
-    if(isset($wp->query_vars['ngp_actiontag_type'])) {
+    $pagename = (isset($wp->query_vars['pagename']) ? $wp->query_vars['pagename'] : '');
+    $page = substr($pagename, strrpos($pagename, '/')+1);
+    
+    $signup_form_slug = get_option('ngp_action_tag_signup_form_slug');
+    $contribution_form_slug = get_option('ngp_action_tag_contribution_form_slug');
+    $petition_form_slug = get_option('ngp_action_tag_petition_form_slug');
+    $volunteer_form_slug = get_option('ngp_action_tag_volunteer_form_slug');
+    
+    //if(isset($wp->query_vars['ngp_actiontag_type'])) {
+    if($signup_form_slug != '' && strpos($pagename, $signup_form_slug) === 0) {
       
-      $this->page_type = $wp->query_vars['ngp_actiontag_type'];
-      $this->page_name = $wp->query_vars['ngp_actiontag_name'];
+      $this->page_type = 'signup';
+      $this->page_name = $page;
+    } elseif($contribution_form_slug != '' && strpos($pagename, $contribution_form_slug) === 0) {
       
-      add_filter('the_content', array($this, 'setup_form'));
-      add_action('template_redirect', array($this, 'setup_template'));
+      $this->page_type = 'contribution';
+      $this->page_name = $page;
+    } elseif($petition_form_slug != '' && strpos($pagename, $petition_form_slug) === 0) {
+      
+      $this->page_type = 'petition';
+      $this->page_name = $page;
+    } elseif($volunteer_form_slug != '' && strpos($pagename, $volunteer_form_slug) === 0) {
+      
+      $this->page_type = 'volunteer';
+      $this->page_name = $page;
     }
+    
+    if($this->page_type != '') {
+	    
+	    add_filter('wp_title', array($this, 'setup_title'));
+			add_action('template_redirect', array($this, 'setup_template'));
+		}
   }
   
-  public function setup_form($content) {
+  public function setup_title($title) {
 		
 		return '';
 	}
-  
+  	
   public function setup_template() {
     
     if($this->setup_complete)
       return;
+    
+    status_header(200);
     
     $form = $this->api->load_form_by_name_or_id($this->page_name, $this->page_type);
     $template_file = locate_template($this->page_type.'-form.php');

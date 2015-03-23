@@ -100,7 +100,7 @@ class NGPActionTag_Admin {
   
   public function type_settings() {
 	  
-	  $update_rewrites = false;
+	  /*$update_rewrites = false;
 	  
 	  if(get_option('ngp_action_tag_signup_form_slug') != '') {
       
@@ -127,7 +127,7 @@ class NGPActionTag_Admin {
     }
     
     global $wp_rewrite;
-    $wp_rewrite->flush_rules(false);
+    $wp_rewrite->flush_rules(false);*/
     
 	  include 'templates/type_settings.php';
 	}

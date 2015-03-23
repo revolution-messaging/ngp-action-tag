@@ -64,7 +64,7 @@ class NGPActionTag {
     $site = new NGPActionTag_Site($this->get_version());
     
     //$this->loader->add_action('init', $site, 'init');
-    $this->loader->add_filter('query_vars', $site, 'register_query_vars');
+    //$this->loader->add_filter('query_vars', $site, 'register_query_vars');
     $this->loader->add_action('parse_request', $site, 'parse_request');
     
     add_shortcode('actiontag', array(&$site, 'create_shortcode'));
