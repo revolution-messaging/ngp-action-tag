@@ -1,4 +1,15 @@
-		<?php
+<?php 
+/*
+ *	Plugin Name: WP NGP ActionTag Plugin
+ *	Plugin URI: http://www.revolutionmessaging.com
+ *	Description: Provide a list of available forms. 
+ *	Version: 2.0 
+ *	Author: Revolution Messaging
+ *	Author URI: http://www.revolutionmessaging.com
+ *	License: GPL2
+ *
+*/
+// Copyright (C) 2015 Revolution Messaging, LLC
   
 class NGPActionTag_Site {
  
@@ -13,11 +24,6 @@ class NGPActionTag_Site {
     $this->version = $version;  
     $this->api = new NGPActionTag_API(); 
     $this->setup_complete = false;
-  }
-  
-  public function init() {
-    
-    
   }
   
   public function register_query_vars($vars) {
@@ -35,10 +41,16 @@ class NGPActionTag_Site {
       $this->page_name = $wp->query_vars['ngp_actiontag_name'];
       
       add_filter('the_content', array($this, 'setup_form'));
+      add_action('template_redirect', array($this, 'setup_template'));
     }
   }
   
-  public function setup_form() {
+  public function setup_form($content) {
+		
+		return '';
+	}
+  
+  public function setup_template() {
     
     if($this->setup_complete)
       return;
@@ -110,9 +122,11 @@ class NGPActionTag_Site {
     if(!empty($template_file)) {
       
       include $template_file;
+      exit;
     } else {
       
       include 'templates/'.$this->page_type.'-form.php';
+      exit;
     }
     
     $this->setup_complete = true;
