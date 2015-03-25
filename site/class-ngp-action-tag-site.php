@@ -79,7 +79,11 @@ class NGPActionTag_Site {
     if($this->setup_complete)
       return;
     
+    // Set the header since it's 404 by default with this "virtual" page.
+    // Set the title to the default blog title, so that it can be customized on the 
+    // templates.
     status_header(200);
+    $custom_title = get_bloginfo('name');
     
     $form = $this->api->load_form_by_name_or_id($this->page_name, $this->page_type);
     $template_file = locate_template($this->page_type.'-form.php');
