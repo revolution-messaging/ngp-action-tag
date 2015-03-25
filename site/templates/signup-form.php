@@ -3,7 +3,7 @@
  * @package WordPress
  * @subpackage NGPActionTag
  */
-
+ 
 get_header(); ?>
 
 <section id="content" role="main">

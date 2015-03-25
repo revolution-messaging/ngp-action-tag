@@ -19,12 +19,22 @@ class NGPActionTag_Site {
   protected $page_name;
   protected $setup_complete;
   
+  public static $ngp_page = false;
+  
   public function __construct($version) {
     
     $this->version = $version;  
     $this->api = new NGPActionTag_API(); 
     $this->setup_complete = false;
   }
+  
+  public static function get_custom_title() {
+	  
+	  if(self::$ngp_page)
+	  	return get_bloginfo('name');
+	  else
+	  	return '';
+	}
   
   public function register_query_vars($vars) {
     
@@ -64,15 +74,9 @@ class NGPActionTag_Site {
     
     if($this->page_type != '') {
 	    
-	    add_filter('wp_title', array($this, 'setup_title'));
 			add_action('template_redirect', array($this, 'setup_template'));
 		}
   }
-  
-  public function setup_title($title) {
-		
-		return '';
-	}
   	
   public function setup_template() {
     
@@ -80,10 +84,8 @@ class NGPActionTag_Site {
       return;
     
     // Set the header since it's 404 by default with this "virtual" page.
-    // Set the title to the default blog title, so that it can be customized on the 
-    // templates.
     status_header(200);
-    $custom_title = get_bloginfo('name');
+    self::$ngp_page = true;
     
     $form = $this->api->load_form_by_name_or_id($this->page_name, $this->page_type);
     $template_file = locate_template($this->page_type.'-form.php');
