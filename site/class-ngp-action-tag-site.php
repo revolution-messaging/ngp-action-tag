@@ -55,23 +55,28 @@ class NGPActionTag_Site {
     $event_form_slug = get_option('ngp_action_tag_event_form_slug');
 
     //if(isset($wp->query_vars['ngp_actiontag_type'])) {
-    if($signup_form_slug != '' && strpos($pagename, $signup_form_slug) === 0) {
+    $path_parts = explode('/', $pagename);
+    $first_path = null;
+    if(count($path_parts)>0) {
+      $first_path = $path_parts[0];
+    }
+    if($signup_form_slug != '' && $first_path === $signup_form_slug) {
 
       $this->page_type = 'signup';
       $this->page_name = $page;
-    } elseif($contribution_form_slug != '' && strpos($pagename, $contribution_form_slug) === 0) {
+    } elseif($contribution_form_slug != '' && $first_path === $contribution_form_slug) {
 
       $this->page_type = 'contribution';
       $this->page_name = $page;
-    } elseif($event_form_slug != '' && strpos($pagename, $event_form_slug) === 0) {
+    } elseif($event_form_slug != '' && $first_path === $event_form_slug) {
 
       $this->page_type = 'event';
       $this->page_name = $page;
-    } elseif($petition_form_slug != '' && strpos($pagename, $petition_form_slug) === 0) {
+    } elseif($petition_form_slug != '' && $first_path === $petition_form_slug) {
 
       $this->page_type = 'petition';
       $this->page_name = $page;
-    } elseif($volunteer_form_slug != '' && strpos($pagename, $volunteer_form_slug) === 0) {
+    } elseif($volunteer_form_slug != '' && $first_path === $volunteer_form_slug) {
 
       $this->page_type = 'volunteer';
       $this->page_name = $page;
