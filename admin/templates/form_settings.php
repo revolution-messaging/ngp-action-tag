@@ -6,11 +6,11 @@
 			<div id="post-body-content">
 				<div class="meta-box-sortables ui-sortable">
 					<div class="postbox">
-						
+
 						<form name="ngp_action_tag_type_form" method="post" action="options.php">
   						<?php settings_errors(); ?>
   						<?php @settings_fields('ngp-action-tag-form-settings'); ?>
-							
+
 							<h3><span>Select from a form below</span></h3>
 							<div class="inside">
 								<select id="ngp_action_tag_form_selection_type" name="ngp_action_tag_form_selection_type" onchange="updateType();">
@@ -19,6 +19,7 @@
 									<option value="ContributionForm" <?php if($ngp_action_tag_form_selection_type == 'ContributionForm'): ?>selected="selected"<?php endif; ?>>Contribution Forms</option>
 									<option value="PetitionForm" <?php if($ngp_action_tag_form_selection_type == 'PetitionForm'): ?>selected="selected"<?php endif; ?>>Petition Forms</option>
 									<option value="VolunteerForm" <?php if($ngp_action_tag_form_selection_type == 'VolunteerForm'): ?>selected="selected"<?php endif; ?>>Volunteer Forms</option>
+									<option value="EventForm" <?php if($ngp_action_tag_form_selection_type == 'EventForm'): ?>selected="selected"<?php endif; ?>>Event Forms</option>
 								</select>&nbsp;&nbsp;
 								<select id="ngp_action_tag_form_selection_form_SignupForm" name="ngp_action_tag_form_selection_form_signup" class="ngp_action_tag_form_selection_form" onchange="updateForm(this);" style="display: none;">
 									<option value="">-Select-</option>
@@ -52,9 +53,17 @@
 										<?php endif; ?>
 									<?php endforeach; ?>
 								</select>
+								<select id="ngp_action_tag_form_selection_form_EventForm" name="ngp_action_tag_form_selection_form_event" class="ngp_action_tag_form_selection_form" onchange="updateForm(this);" style="display: none;">
+									<option value="">-Select-</option>
+									<?php foreach($forms as $form): ?>
+										<?php if($form->type == 'EventForm'): ?>
+										<option class="<?php echo $form->type; ?>" value="<?php echo $form->obfuscatedId; ?>" <?php if($ngp_action_tag_form_selection_form_event == $form->obfuscatedId): ?>selected="selected"<?php endif; ?>><?php echo $form->name; ?></option>
+										<?php endif; ?>
+									<?php endforeach; ?>
+								</select>
 							</div>
 							<br /><br />
-							
+
 							<?php foreach($forms as $form): ?>
 								<div id="form_<?php echo $form->obfuscatedId; ?>" class="form" style="display:none;">
 									<h3><span><?php echo $form->name; ?> (<?php echo $form->type; ?>)</span></h3>
@@ -74,6 +83,12 @@
 											<tr>
 												<td style="width: 260px;"><label for="">Page URL</label></td>
 												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?></a></td>
+												<td>&nbsp;</td>
+											</tr>
+										<?php elseif($form->type == 'EventForm' && get_option('ngp_action_tag_event_form_slug') != ''): ?>
+											<tr>
+												<td style="width: 260px;"><label for="">Page URL</label></td>
+												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_event_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_event_form_slug').'/'.$form->slug; ?></a></td>
 												<td>&nbsp;</td>
 											</tr>
 											<?php elseif($form->type == 'ContributionForm' && get_option('ngp_action_tag_contribution_form_slug') != ''): ?>
@@ -167,11 +182,11 @@
 									</div>
 								</div>
 							<?php endforeach; ?>
-							
+
 							<div id="form_save" class="inside">
 								<p style="padding-left:10px;"><?php @submit_button(); ?></p>
 							</div>
-						</form>		
+						</form>
 					</div>
 				</div>
 			</div>
@@ -183,12 +198,12 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		updateType();
-		
+
 		<?php foreach($forms as $form): ?>
 		updateShortCode('<?php echo $form->obfuscatedId; ?>');
 		<?php endforeach; ?>
 	});
-	
+
 	function updateType() {
 		if(jQuery('#ngp_action_tag_form_selection_type').val() == '') {
 			jQuery('.ngp_action_tag_form_selection_form').hide();
@@ -197,11 +212,11 @@
 		} else {
 			jQuery('.ngp_action_tag_form_selection_form').hide();
 			jQuery('#ngp_action_tag_form_selection_form_'+jQuery('#ngp_action_tag_form_selection_type').val()).show();
-			
+
 			updateForm(jQuery('#ngp_action_tag_form_selection_form_'+jQuery('#ngp_action_tag_form_selection_type').val())[0]);
 		}
 	}
-	
+
 	function updateForm(el) {
 		if(jQuery(el).val() == '') {
 			jQuery('.form').hide();
@@ -212,7 +227,7 @@
 			jQuery('#form_'+jQuery(el).val()).show();
 		}
 	}
-	
+
 	function updateShortCode(id) {
 		var snippet = '[actiontag id="'+id+'" endpoint="<?php echo get_option('ngp_action_tag_endpoint'); ?>" ';
 		snippet += (jQuery('#ngp_action_tag_form_'+id+'_action_message').attr('checked') ? 'success="'+jQuery('#ngp_action_tag_form_'+id+'_message').val()+'" ' : '');
@@ -221,7 +236,7 @@
 		snippet += (jQuery('#ngp_action_tag_form_'+id+'_labels').val() != '' ? 'labels="'+jQuery('#ngp_action_tag_form_'+id+'_labels').val()+'" ' : '');
 		snippet += (jQuery('#ngp_action_tag_form_'+id+'_databag').val() != '' ? 'databag="'+jQuery('#ngp_action_tag_form_'+id+'_databag').val()+'" ' : '');
 		snippet += ']';
-		
-		jQuery('#action_tag_snippet_'+id).html(snippet);	
+
+		jQuery('#action_tag_snippet_'+id).html(snippet);
 	}
 </script>
