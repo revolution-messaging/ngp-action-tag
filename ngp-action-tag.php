@@ -25,6 +25,9 @@ class NGPActionTag {
     $this->version = '2.2.0'; 
     
     $this->load_dependencies();
+    if (!defined('WP_BLOG_URL')) {
+      define('WP_BLOG_URL', get_bloginfo('url'));
+    }
     
     if(is_admin()) {
       
