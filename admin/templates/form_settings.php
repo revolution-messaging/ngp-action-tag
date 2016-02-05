@@ -82,31 +82,31 @@
 											<?php if($form->type == 'SignupForm' && get_option('ngp_action_tag_signup_form_slug') != ''): ?>
 											<tr>
 												<td style="width: 260px;"><label for="">Page URL</label></td>
-												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?></a></td>
+												<td style="width: 500px;"><a href="<?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_signup_form_slug').'/'.$form->slug; ?></a></td>
 												<td>&nbsp;</td>
 											</tr>
 										<?php elseif($form->type == 'EventForm' && get_option('ngp_action_tag_event_form_slug') != ''): ?>
 											<tr>
 												<td style="width: 260px;"><label for="">Page URL</label></td>
-												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_event_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_event_form_slug').'/'.$form->slug; ?></a></td>
+												<td style="width: 500px;"><a href="<?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_event_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_event_form_slug').'/'.$form->slug; ?></a></td>
 												<td>&nbsp;</td>
 											</tr>
 											<?php elseif($form->type == 'ContributionForm' && get_option('ngp_action_tag_contribution_form_slug') != ''): ?>
 											<tr>
 												<td style="width: 260px;"><label for="">Page URL</label></td>
-												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_contribution_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_contribution_form_slug').'/'.$form->slug; ?></a></td>
+												<td style="width: 500px;"><a href="<?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_contribution_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_contribution_form_slug').'/'.$form->slug; ?></a></td>
 												<td>&nbsp;</td>
 											</tr>
 											<?php elseif($form->type == 'PetitionForm' && get_option('ngp_action_tag_petition_form_slug') != ''): ?>
 											<tr>
 												<td style="width: 260px;"><label for="">Page URL</label></td>
-												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_petition_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_petition_form_slug').'/'.$form->slug; ?></a></td>
+												<td style="width: 500px;"><a href="<?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_petition_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_petition_form_slug').'/'.$form->slug; ?></a></td>
 												<td>&nbsp;</td>
 											</tr>
 											<?php elseif($form->type == 'VolunteerForm' && get_option('ngp_action_tag_volunteer_form_slug') != ''): ?>
 											<tr>
 												<td style="width: 260px;"><label for="">Page URL</label></td>
-												<td style="width: 500px;"><a href="<?php echo get_site_url().'/'.get_option('ngp_action_tag_volunteer_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo get_site_url().'/'.get_option('ngp_action_tag_volunteer_form_slug').'/'.$form->slug; ?></a></td>
+												<td style="width: 500px;"><a href="<?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_volunteer_form_slug').'/'.$form->slug; ?>" target="_blank"><?php echo WP_BLOG_URL.'/'.get_option('ngp_action_tag_volunteer_form_slug').'/'.$form->slug; ?></a></td>
 												<td>&nbsp;</td>
 											</tr>
 											<?php endif; ?>
